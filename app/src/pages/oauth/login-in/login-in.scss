@@ -1,0 +1,102 @@
+page-login-in, page-sign-in, page-sign-in-detail, page-forget-password, page-forget-password-detail {
+  .header-container {
+    margin-top: 25px;
+    padding: 8px;
+    [ion-button] {
+      font-size: getFontSize(big);
+    }
+    ion-icon {
+      font-size: getFontSize(huge-x);
+      color: getColor(text-dark-week);
+    }
+  }
+
+  .main-container {
+    padding: 0 24px;
+
+    @include center;
+    flex-direction: column;
+
+    .title {
+      margin-top: 24px;
+      font-size: getFontSize(great);
+      color: #38424e;
+    }
+
+    form {
+      margin-top: 24px;
+      width: 100%;
+      .error-des {
+        display: none;
+      }
+      .ng-dirty.ng-invalid:not(.item-input-has-focus) + .error-des {
+        display: block;
+        color: getColor(danger);
+        font-size: getFontSize(normal);
+        margin: 6px 8px 0;
+      }
+
+      .error-des + ion-item {
+        margin-top: 8px;
+      }
+
+      .ion-item + ion-item {
+        margin-top: 8px;
+      }
+
+      ion-item.item-md {
+        padding: 0;
+        background-color: transparent;
+        box-shadow: none !important;
+        .item-inner {
+          box-shadow: none !important;
+        }
+      }
+
+      .password-visible {
+        position: relative;
+        z-index: 100;
+        ion-icon {
+          font-size: getFontSize(huge-x);
+          color: getColor(primary);
+        }
+      }
+
+      .item-input-has-focus.item-input-has-value .password-visible {
+        transform: translateX(-24px);
+        transition: transform 100ms ease-in !important;
+      }
+
+      .submit-button {
+        font-size: getFontSize(big);
+        margin-top: 32px;
+        border-radius: 6px;
+      }
+    }
+
+    .tip {
+      margin-top: 24px;
+      font-size: getFontSize(normal);
+      color: getColor(primary);
+      align-self: flex-end;
+    }
+
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+[keyborder] {
+  page-login-in, page-sign-in, page-sign-in-detail, page-forget-password, page-forget-password-detail {
+    .copyright {
+      display: none;
+    }
+  }
+}
+

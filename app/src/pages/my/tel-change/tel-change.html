@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>修改手机号</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-content>
+    <form #f="ngForm" (submit)="omSubmit()">
+      <ion-list>
+        <ion-item>
+          <div class="flex-a-center">
+            <div class="color-text-dark-week fix-length" margin-right>新手机号</div>
+            <input class="flex-grow tel-warp" type="tel" name="tel" placeholder="请输入新手机号"
+                   maxlength="11" minlength="11" required
+                   [(ngModel)]="tel">
+
+            <button ion-button color="accent" class="verify-warp" type="button" (click)="getVcode()"
+                    [disabled]="f.controls?.tel?.valid === false || userProvider.lastSendVcodeTime > 0">
+              {{userProvider.lastSendVcodeTime > 0 ? userProvider.lastSendVcodeTime + 's后重试' : '获取验证码'}}
+            </button>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <div class="flex-a-center">
+            <div class="color-text-dark-week fix-length" margin-right>验证码</div>
+            <input class="flex-grow" type="tel" name="vcode" placeholder="请输入收到的验证码(6位数字)"
+                   maxlength="6" minlength="6" required
+                   [(ngModel)]="vcode">
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <div class="flex-a-center">
+            <div class="color-text-dark-week fix-length" margin-right>密码</div>
+            <input class="flex-grow" type="password" name="text" placeholder="请输入 登陆密码"
+                   minlength="6" required
+                   [(ngModel)]="password">
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <div padding style="width: 100%">
+        <button ion-button full round color="accent" type="submit" [disabled]="!f.dirty || !f.valid">提交</button>
+      </div>
+    </form>
+  </ion-content>

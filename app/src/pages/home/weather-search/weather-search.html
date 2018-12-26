@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back" class="color-text-dark"></ion-icon>
+      </button>
+    </ion-buttons>
+    <form #f="ngForm" class="flex-j-between flex-a-center"
+          (submit)="searchKeyChangeEvent.next(keyword);weatherProvider.saveHistorySearch(keyword)">
+      <input class="search-input" placeholder="输入要搜索的城市名称" type="text" required [minlength]="1" name="keyword"
+             (input)="searchKeyChangeEvent.next(keyword)" [(ngModel)]="keyword">
+      <ion-buttons right>
+        <button ion-button icon-only type="submit" [disabled]="!f.dirty || !f.valid">
+          <div class="color-text-dark">搜索</div>
+        </button>
+      </ion-buttons>
+    </form>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="tag-container" *ngIf="topCitys.length > 0">
+    <div class="tag-title">热门城市</div>
+    <div class="tag-content">
+      <div class="tag-item" *ngFor="let top of topCitys;trackBy: trackByIndex" (click)="onCityClick(top)">
+        {{top.location}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tag-container" *ngIf="historys.length > 0">
+    <div class="tag-title">
+      <div>历史记录</div>
+      <ion-icon name="trash" (click)="weatherProvider.cleanHistorySearch()"></ion-icon>
+    </div>
+    <div class="tag-content">
+      <div class="tag-item" *ngFor="let history of historys;trackBy: trackByIndex" (click)="onHistoryClick(history)">
+        {{history}}
+      </div>
+    </div>
+  </div>
+
+  <div class="search-result-container">
+    <ion-list>
+      <button ion-item *ngFor="let search of searchResults" (click)="onCityClick(search)">
+        <ion-label>{{search.location}}</ion-label>
+        <div class="text-size-small color-text-dark-week" item-right>{{search.adminArea ? search.adminArea : ''}}</div>
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+      </button>
+    </ion-list>
+  </div>
+</ion-content>
+<loading-error-tip></loading-error-tip>

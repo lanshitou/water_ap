@@ -1,0 +1,10 @@
+page-server-url {
+  ion-list.list {
+    @include card;
+    margin: 12px;
+  }
+
+  ion-item input {
+    border: none;
+  }
+}

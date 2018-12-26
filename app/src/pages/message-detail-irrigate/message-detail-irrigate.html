@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ext ? '告警详情' : '灌溉任务'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="ext || task">
+    <ng-container *ngIf="ext;else taskTemp">
+      <decorate-title>告警类型</decorate-title>
+      <div class="card-warp">
+        <img class="icon" src="./assets/imgs/waring/img_irrigate.png">
+        <div class="flex-a-center flex-grow flex-j-between">
+          <div class="flex-a-center">
+            <div class="color-text-dark text-size-normal font-bold" margin-right>告警类型:</div>
+            <div class="color-text-dark-week text-size-normal">灌溉任务</div>
+          </div>
+          <div class="flex-a-center">
+            <div class="color-text-dark text-size-normal font-bold" margin-right>告警状态:</div>
+            <div class="text-size-normal font-bold"
+                 [ngClass]="{'color-succeed' : ext.cleared, 'color-danger' : !ext.cleared}">{{ext.cleared
+              ? '已消除' : '告警中'}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <decorate-title>告警详情</decorate-title>
+      <irrigate-task-history [data]="ext.ext"></irrigate-task-history>
+
+      <device-location [data]="ext.addr" [isIrrigate]="true"></device-location>
+
+      <ng-container *ngIf="ext.produceTime">
+        <decorate-title>产生时间</decorate-title>
+        <div class="card-warp">
+          <img class="icon" src="./assets/imgs/waring/img_waring_produce.png">
+          <div class="flex-column flex-j-between">
+            <div class="flex-a-center">
+              <div class="color-text-dark text-size-normal font-bold" margin-right>告警产生原因:</div>
+              <div class="color-text-dark-week text-size-normal">灌溉任务执行失败</div>
+            </div>
+            <div class="flex-a-center">
+              <div class="color-text-dark text-size-normal font-bold" margin-right>告警产生时间:</div>
+              <div class="color-text-dark-week text-size-normal">{{ext.produceTime | date: 'MM-dd HH:mm'}}</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="ext.cleared && ext.clearTime">
+        <decorate-title>恢复时间</decorate-title>
+        <div class="card-warp">
+          <img class="icon" src="./assets/imgs/waring/img_waring_clear.png">
+          <div class="flex-column flex-j-between">
+            <div class="flex-a-center">
+              <div class="color-text-dark text-size-normal font-bold" margin-right>告警消除原因:</div>
+              <div class="color-text-dark-week text-size-normal">手动确认消除</div>
+            </div>
+            <div class="flex-a-center">
+              <div class="color-text-dark text-size-normal font-bold" margin-right>告警消除时间:</div>
+              <div class="color-text-dark-week text-size-normal">{{ext.clearTime | date: 'MM-dd HH:mm'}}</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="flex-center" padding *ngIf="!ext.cleared">
+        <button ion-button full round color="accent" type="submit" (click)="onClearClick()">消除告警</button>
+      </div>
+    </ng-container>
+
+    <ng-template #taskTemp>
+      <ng-container *ngIf="task">
+        <irrigate-task-history [data]="task"></irrigate-task-history>
+      </ng-container>
+    </ng-template>
+
+  </ng-container>
+</ion-content>

@@ -1,0 +1,62 @@
+irrigate-task-history {
+  @include card;
+
+  margin: 0 12px;
+  position: relative;
+  display: flex;
+
+  .margin-top-8 {
+    margin-top: 8px;
+  }
+
+  .height-18 {
+    @include hw(18px, null);
+    overflow: hidden;
+  }
+
+  .forecast-text {
+    font-weight: 700;
+    font-size: getFontSize(small);
+    color: getColor(accent);
+  }
+
+  .icon {
+    @include heightWidth(25px);
+    border-radius: 8px;
+    margin-right: 12px;
+  }
+
+  .username {
+    border-left: 1px solid getColor(accent);
+    padding-left: 6px;
+    height: 18px;
+    font-size: getFontSize(normal);
+    color: getColor(text-dark);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .divider-v {
+    height: calc(100% - 24px);
+    align-self: center;
+    width: 1px;
+    background-color: getColor(divider);
+  }
+
+  .left-warp {
+    width: calc(50% - 0.5px);
+    padding: 4px 12px 12px;
+  }
+  .right-warp {
+    width: calc(50% - 0.5px);
+    padding: 4px 12px 12px;
+  }
+
+  .status-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    @include heightWidth(8px);
+    border-radius: 4px;
+  }
+}

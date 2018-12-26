@@ -1,0 +1,6 @@
+<ion-infinite-scroll *ngIf="loadStatus !== 5" [enabled]="loadStatus !== 5" (ionInfinite)="onInfinite()">
+  <ion-infinite-scroll-content [loadingSpinner]="loadStatus === 1 ? loadingSpinner : undefined"
+                               (click)="onContentClick()"
+                               [loadingText]="loadStatus === 1 ? loadingText : loadStatus === 3 ? failedText : loadStatus === 4 ? noMoreText : ''">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

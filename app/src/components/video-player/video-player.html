@@ -1,0 +1,26 @@
+<div #videoContainer class="video-container" (click)="onVideoContainerClick()">
+  <!--视频主体-->
+  <div #player class="video-player-container"></div>
+
+  <!--4g 网络或者加载错误的重试和提示-->
+  <div class="tip-retry">{{videoTip}}</div>
+
+  <!--加载中-->
+  <div class="loading-content" *ngIf="playerControl?.status === 1"></div>
+
+  <!--视频控制-->
+  <div class="controller-container">
+    <button class="play-pause" ion-button icon-only clear no-margin no-padding
+            (click)="playPause(playerControl?.status !== 4);$event.stopPropagation()">
+      <ion-icon [name]="playerControl?.status === 4 ? 'pause' : 'play'"></ion-icon>
+    </button>
+    <button class="sound" ion-button icon-only clear no-margin no-padding (click)="mute();$event.stopPropagation()">
+      <ion-icon [name]="playerControl?.isMute ? 'volume-off' : 'volume-up'"></ion-icon>
+    </button>
+    <button class="expend-normal" ion-button icon-only clear no-margin no-padding
+            (click)="expendNormal();$event.stopPropagation()">
+      <ion-icon [name]="isFullScreen ? 'exit' : 'expand'"></ion-icon>
+    </button>
+  </div>
+</div>
+

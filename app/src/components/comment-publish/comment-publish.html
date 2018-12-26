@@ -1,0 +1,5 @@
+<form class="comment-publish-warp" #f=ngForm (submit)="submitComment()">
+  <input placeholder="请输入评论" name="comment" type="text" maxlength="140" minlength="1" autocomplete="off" required
+         [(ngModel)]="comment">
+  <button class="submit-button" type="submit" ion-button clear [disabled]="!f.dirty || !f.valid">发布</button>
+</form>

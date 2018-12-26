@@ -1,0 +1,12 @@
+<div class="flex-a-center half-warp">
+  <img src="./assets/imgs/img_farmland_irrigate_status.png">
+  <div class="font-bold color-text-dark text-size-big">{{data.irriStatus | farmlandIrriStatus}}</div>
+</div>
+
+<div class="flex-a-center flex-j-between half-warp">
+  <div class="flex-a-center">
+    <img src="./assets/imgs/img_farmland_waring.png">
+    <div class="font-bold color-text-dark text-size-big">告警</div>
+  </div>
+  <div class="badge">{{data.waringStatistic.offline + data.waringStatistic.irrigate + data.waringStatistic.alarm}}</div>
+</div>

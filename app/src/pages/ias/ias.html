@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons right *ngIf="data?.configMode">
+      <button ion-button class="flex-a-center" (click)="onSwitchModeClick()">
+        <ion-icon name="md-switch" class="text-size-large"></ion-icon>
+        <div style="margin-left: 4px">{{data?.mode === 1 ? '手动模式' : '自动模式'}}</div>
+      </button>
+    </ion-buttons>
+    <ion-title>{{systemList.length === 1 ? data.name : '园区管理'}}</ion-title>
+  </ion-toolbar>
+  <div class="ios-scroll-bar-hide" *ngIf="systemList.length > 1">
+    <scroll-y-container>
+      <ion-segment [(ngModel)]="checkedSystemId">
+        <ion-segment-button *ngFor="let system of  systemList;trackBy: trackById" [value]="system.id"
+                            (ionSelect)="changeCheckedSystem(system.id);">
+          {{system.name}}
+        </ion-segment-button>
+      </ion-segment>
+    </scroll-y-container>
+  </div>
+</ion-header>
+
+<ion-content>
+  <decorate-title>告警统计</decorate-title>
+  <waring-statistic [data]="data?.WaringStatistic"></waring-statistic>
+
+  <ng-container *ngIf="data?.dcPoints">
+    <decorate-title>环境信息</decorate-title>
+    <dc-point-group [data]="data.dcPoints"></dc-point-group>
+  </ng-container>
+
+  <ng-container *ngIf="data?.weatherStation?.dcPoints">
+    <decorate-title>{{data.weatherStation.name}}</decorate-title>
+    <dc-point-group [data]="data.weatherStation.dcPoints"></dc-point-group>
+  </ng-container>
+
+  <ng-container *ngIf="data?.cameraPreviews">
+    <decorate-title>视频监控</decorate-title>
+    <scroll-y-container [paddingStart]="4" [paddingEnd]="4">
+      <camera-preview *ngFor="let d of data.cameraPreviews;trackBy: trackById" [data]="d"></camera-preview>
+    </scroll-y-container>
+  </ng-container>
+
+  <ng-container *ngIf="data?.irriAndFerSys?.pump">
+    <decorate-title>水肥一体化系统</decorate-title>
+    <device-group [data]="[data.irriAndFerSys.pump]"></device-group>
+  </ng-container>
+
+  <ng-container *ngIf="data?.devices">
+    <decorate-title>公共设备</decorate-title>
+    <device-group [data]="data.devices"></device-group>
+  </ng-container>
+
+  <ng-container *ngIf="data?.farmlandOutlines">
+    <ng-container *ngFor="let d of data.farmlandOutlines;trackBy: trackById">
+      <decorate-title>{{d.name}}</decorate-title>
+      <farmland [data]="d" [mode]="data.mode"></farmland>
+    </ng-container>
+  </ng-container>
+
+  <ion-fab *ngIf="data?.mode === 2" right bottom>
+    <button ion-fab color="succeed" navTo="IrrigatesTaskPage" [params]="true">
+      <ion-icon name="water"></ion-icon>
+    </button>
+  </ion-fab>
+  <pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>
+</ion-content>
+<loading-error-tip></loading-error-tip>

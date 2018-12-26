@@ -1,0 +1,31 @@
+<div class="flex-j-between flex-a-center title-warp">
+  <decorate-title>告警位置</decorate-title>
+  <div class="color-accent text-size-normal flex-center font-bold" (click)="navTo()">
+    {{isIrrigate ? '定位到灌溉区' : '定位到设备'}}
+  </div>
+</div>
+<div class="content-warp">
+  <div class="item-warp" *ngIf="data.iasName">
+    <div class="icon color1"></div>
+    <div class="desc">系统名称</div>
+    <div class="name">{{data.iasName}}</div>
+  </div>
+
+  <div class="item-warp" *ngIf="data.irriFerName">
+    <div class="icon color2"></div>
+    <div class="desc">水肥一体化名称</div>
+    <div class="name">{{data.irriFerName}}</div>
+  </div>
+
+  <div class="item-warp" *ngIf="data.farmlandName">
+    <div class="icon color3"></div>
+    <div class="desc">园区名称</div>
+    <div class="name">{{data.farmlandName}}</div>
+  </div>
+
+  <div class="item-warp" *ngIf="data.areaName">
+    <div class="icon color4"></div>
+    <div class="desc">灌溉区名称</div>
+    <div class="name">{{data.areaName}}</div>
+  </div>
+</div>

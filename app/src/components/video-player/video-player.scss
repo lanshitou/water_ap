@@ -1,0 +1,91 @@
+video-player {
+  position: relative;
+  //16:9
+  height: 56.25vw;
+  width: 100vw;
+  display: block;
+  background: #999999;
+  transition: height, width, transform 150ms;
+
+  &.full-screen {
+    height: 100vw;
+    width: 100vh;
+    transform: rotate(90deg);
+
+    .back-button {
+      display: block;
+    }
+
+    .controller-container {
+      bottom: 0;
+    }
+  }
+
+  .loading-content {
+    height: 56px;
+    width: 56px;
+    margin: auto;
+    position: absolute;
+    @include fullPosition;
+    background-size: cover;
+    background: url("../assets/imgs/svg_puff_loading.svg") center;
+  }
+
+  .video-player-container {
+    position: absolute;
+    @include fullPosition;
+    background-color: #989898;
+    width: 100%;
+    height: 100%;
+    #video {
+      object-fit: fill;
+      @include heightWidth(100%);
+      background-color: #989898;
+    }
+  }
+
+  .tip-retry {
+    position: absolute;
+    @include fullPosition;
+    @include center;
+    font-size: getFontSize(big);
+    text-align: center;
+    color: white;
+    padding: 0 32px;
+  }
+
+  .controller-container {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 40px;
+    width: 100%;
+
+    button {
+      @include heightWidth(40px);
+      color: white;
+      ion-icon {
+        @include heightWidth(24px);
+        @include center;
+        font-size: getFontSize(huge-x);
+      }
+    }
+
+    .play-pause {
+      position: absolute;
+      left: 8px;
+    }
+
+    .sound {
+      position: absolute;
+      left: 64px;
+    }
+
+    .expend-normal {
+      position: absolute;
+      right: 8px;
+    }
+  }
+}

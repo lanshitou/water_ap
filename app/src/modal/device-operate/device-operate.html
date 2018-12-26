@@ -1,0 +1,102 @@
+<div class="container" (click)="$event.stopPropagation()">
+  <div padding class="flex-j-between title-warp">
+    <div class="flex-a-center">
+      <img class="device-icon margin-right-6" src="{{data?.type | deviceIcon}}">
+      <div class="text-size-big color-text-dark font-bold margin-right-6">{{data?.name}}</div>
+      <div class="text-size-normal font-bold" [style.color]="data?.status | deviceStatusTextColor">{{data?.status |
+        deviceStatus : data?.type}}
+      </div>
+    </div>
+    <div class="flex-a-center color-accent" navTo="DeviceOperateHistoryPage" [params]="data">
+      <ion-icon name="list-box" class="text-size-large flex-center device-icon"></ion-icon>
+      <div class="text-size-normal">操作记录</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <ng-container *ngIf="data?.operable;else nonOperable">
+    <ng-container *ngIf="data?.status !== -1;else offline">
+      <!--其他设备-->
+      <ng-container *ngIf="data?.type !== 5;else shutter">
+        <ng-container *ngIf="data.status | deviceOperateDisallow : false;else elseClose">
+          <form #f="ngForm" (submit)="onOperateClick(1)">
+            <div class="flex-j-between flex-a-center" padding>
+              <div>
+                <div class="flex-a-center op-type" [class.active]="opType === 1" (click)="opType = 1">
+                  <div class="active-icon"></div>
+                  <div class="active-underline">运行时长</div>
+                </div>
+                <div class="flex-a-center op-type" [class.active]="opType === 2" (click)="opType = 2">
+                  <div class="active-icon"></div>
+                  <div class="active-underline">持续运行</div>
+                </div>
+              </div>
+              <div class="flex-j-center text-size-normal flex-grow">
+                <ion-item *ngIf="opType === 1;else continueTemp">
+                  <ion-input placeholder="1~1440" name="duration" type="tel" placeholder="请输入运行时长" required
+                             [(ngModel)]="duration"></ion-input>
+                  <div class="color-text-dark-week" item-right>分钟</div>
+                </ion-item>
+                <ng-template #continueTemp>
+                  <div class="color-text-dark-week">持续运行手动关闭</div>
+                </ng-template>
+              </div>
+            </div>
+
+            <button class="op-button" type="submit" ion-button full large [disabled]="duration > 1440">
+              开始运行
+            </button>
+          </form>
+        </ng-container>
+
+        <ng-template #elseClose>
+          <form #f="ngForm" (submit)="onOperateClick(2)">
+
+            <div class="center-warp">
+              <div class="color-text-dark-week text-size-big">运行中</div>
+            </div>
+
+            <button class="op-button" type="submit" ion-button full large>
+              立即停止
+            </button>
+          </form>
+        </ng-template>
+      </ng-container>
+      <!--卷帘-->
+      <ng-template #shutter>
+        <form>
+          <div class="center-warp">
+            <button ion-button color="accent" round [disabled]="data.status | deviceOperateDisallow : true"
+                    (click)="onOperateClick(1,100)">上卷
+            </button>
+            <button ion-button color="accent" round [disabled]="data.status | deviceOperateDisallow : false"
+                    (click)="onOperateClick(1,0)">下卷
+            </button>
+            <button ion-button color="accent" round [disabled]="data.status == -1 || data.status == 101"
+                    (click)="onOperateClick(2,0)">
+              停止
+            </button>
+          </div>
+        </form>
+      </ng-template>
+    </ng-container>
+    <!--离线-->
+    <ng-template #offline>
+      <form>
+        <div class="center-warp">
+          <div class="color-danger text-size-big">设备离线无法控制</div>
+        </div>
+      </form>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #nonOperable>
+    <form>
+      <div class="center-warp">
+        <div class="color-text-dark-week text-size-big">没有控制权限</div>
+      </div>
+    </form>
+  </ng-template>
+
+</div>
+

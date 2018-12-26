@@ -1,0 +1,108 @@
+page-my {
+  ion-header {
+    background-color: getColor(primary);
+    z-index: getLayer(full-screnn-header);
+    color: getColor(text-light);
+
+    .toolbar-background-md {
+      background-color: transparent;
+    }
+
+    .header-container {
+      position: relative;
+      padding: 8px 16px 24px;
+      top: -40px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .header-img {
+        border-radius: 100%;
+        @include heightWidth(72px);
+        border: 2px getColor(light) solid;
+      }
+
+      .text-container {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .username {
+          font-size: getFontSize(big);
+        }
+
+        .tel {
+          color: getColor(text-light-week);
+          font-size: getFontSize(small);
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+
+  ion-content > .scroll-content {
+    &:before {
+      content: '';
+      position: absolute;
+      background-color: getColor(primary);
+      height: 64px;
+      width: 100%;
+    }
+
+    .list-md {
+      margin: 0 8px 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        @include fullPosition;
+        background-color: white;
+      }
+
+      .item-md {
+        background-color: transparent;
+        [item-right] {
+          margin: 0;
+        }
+
+        ion-icon {
+          font-size: getFontSize(huge-x);
+          @include center;
+        }
+
+        .item-inner {
+          padding-top: 4px;
+          padding-bottom: 4px;
+
+          ion-label {
+            font-size: getFontSize(normal);
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .quit-button {
+      background-color: getColor(accent);
+      height: 48px;
+      width: calc(100% - 96px);
+      margin: 32px 48px 0;
+
+      ion-icon {
+        font-size: getFontSize(huge);
+      }
+
+      div {
+        margin-left: 6px;
+        font-size: getFontSize(big);
+      }
+    }
+  }
+
+}

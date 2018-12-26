@@ -1,0 +1,16 @@
+pull-refresh {
+  position: absolute;
+  z-index: getLayer(pull-refresh);
+  top: -52px;
+  left: calc(50% - 21px);
+  margin: 0 auto;
+
+  .container {
+    box-shadow: 0 0 10px #bebebe;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 8px;
+    height: 42px;
+    width: 42px;
+  }
+}

@@ -1,0 +1,55 @@
+waring-statistic {
+  margin: 0 12px;
+  @include card;
+
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: #fafafa;
+    top: 16px;
+    left: 16px;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+  }
+
+  :nth-child(3), :nth-child(4) {
+    margin-top: 1px;
+  }
+
+  .item-warp {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px;
+    position: relative;
+    @include hw(null, calc(50% - 0.5px));
+    background-color: getColor(white);
+
+    .img {
+      @include heightWidth(42px)
+    }
+    .title {
+      margin-left: 6px;
+      color: getColor(text-dark-week);
+      font-size: getFontSize(normal);
+    }
+    .badge {
+      position: absolute;
+      right: 12px;
+      top: calc(50% - 12px);
+
+      @include center;
+      @include heightWidth(24px);
+      color: getColor(text-dark);
+      font-size: getFontSize(huge-x);
+      font-weight: 700;
+    }
+  }
+}

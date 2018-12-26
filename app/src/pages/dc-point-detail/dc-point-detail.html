@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{dcPoint.name | dcPointSortName: ''}} {{dcPoint.type | dcPointType}}({{dcPoint.type | dcPointUnit}})
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!ignoreWarn && alarmType !== 0" class="warn-container flex-a-center flex-j-between" @fadeInOut>
+    <div class="flex-a-center">
+      <ion-icon name="warning" color="light"></ion-icon>
+      <div class="text-size-normal color-text-light" style="margin: 0 16px">
+        采集点超过阈值{{alarmType == 1 ? '上限' : '下限'}}请及时处理
+      </div>
+    </div>
+    <ion-icon name="close" color="light" (click)="ignoreWarn = true"></ion-icon>
+  </div>
+
+  <decorate-title padding>实时状态</decorate-title>
+  <div class="flex-j-between card-style">
+    <div class="flex-a-center">
+      <img class="dc-point-icon" src="{{dcPoint.type | dcPointIcon}}">
+      <div class="text-size-big color-text-dark font-bold">{{dcPoint.name | dcPointSortName: ''}} {{dcPoint.type | dcPointType}}</div>
+    </div>
+    <div *ngIf="dcPoint.value !== invalid" class="flex-j-center text-size-big color-text-dark font-bold" padding>
+      当前值 {{dcPoint.value}}
+    </div>
+    <div *ngIf="dcPoint.status === -1" class="flex-j-center text-size-big color-danger font-bold" padding>
+      设备离线
+    </div>
+  </div>
+
+  <decorate-title padding>历史曲线</decorate-title>
+
+  <ion-segment [(ngModel)]="selectDate" mode="ios">
+    <ion-segment-button [value]="1" (ionSelect)="onHistoryDateChange(1)">
+      24小时
+    </ion-segment-button>
+    <ion-segment-button [value]="3" (ionSelect)="onHistoryDateChange(3)">
+      3天
+    </ion-segment-button>
+    <ion-segment-button [value]="7" (ionSelect)="onHistoryDateChange(7)">
+      7天
+    </ion-segment-button>
+  </ion-segment>
+  <canvas #chart class="chart-canvas"></canvas>
+
+
+
+  <form #f="ngForm" *ngIf="dcPoint.configWarn" padding>
+    <div class="flex-j-between flex-a-center">
+      <decorate-title>阈值设置</decorate-title>
+      <div class="flex-a-center">
+        <button *ngIf="alarmDataStatus === 3 && alarmData && alarmData?.upperLimit !== undefined"
+                class="change-threshold-button" type="submit"
+                ion-button clear
+                (click)="onSubmitAlarmConfig(true)">取消告警
+        </button>
+        <button *ngIf="alarmDataStatus === 3 && formAlarmData" class="change-threshold-button" type="submit" ion-button
+                clear
+                (click)="onSubmitAlarmConfig()" style="margin-right: 0"
+                [disabled]="!f.form.valid || !f.form.dirty">修改
+        </button>
+      </div>
+    </div>
+
+    <div [ngSwitch]="alarmDataStatus">
+      <ng-container *ngSwitchCase="1">
+        <progress-spinner class="alarm-loading" color="#448AFF" mode="indeterminate"></progress-spinner>
+      </ng-container>
+      <div *ngSwitchCase="2" class="flex-column flex-center" (click)="getDcPointConfigData()">
+        <img class="alarm-img" src="./assets/imgs/img_alarm_empty.png">
+        <div class="text-size-normal color-text-dark-week">获取失败,点击重试</div>
+      </div>
+      <div *ngSwitchCase="3" class="flex-column flex-center">
+        <ng-container *ngIf="!formAlarmData;else config">
+          <button class="alarm-config-now" ion-button (click)="configNewAlarm()">立即配置</button>
+        </ng-container>
+        <ng-template #config>
+          <ion-item>
+            <ion-label item-left>告警值上限</ion-label>
+            <ion-input [placeholder]="'最大' + upperLimitAlarm + ''" name="upperLimit" type="number"
+                       [(ngModel)]="formAlarmData.upperLimit"></ion-input>
+            <div class="color-text-dark-week" item-right>{{dcPoint.type | dcPointUnit}}</div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label item-left>告警值下限</ion-label>
+            <ion-input [placeholder]="'最小' + lowerLimitAlarm + ''" name="lowerLimit" type="number"
+                       [(ngModel)]="formAlarmData.lowerLimit"></ion-input>
+            <div class="color-text-dark-week" item-right>{{dcPoint.type | dcPointUnit}}</div>
+          </ion-item>
+        </ng-template>
+      </div>
+    </div>
+  </form>
+
+</ion-content>
+<loading-error-tip></loading-error-tip>

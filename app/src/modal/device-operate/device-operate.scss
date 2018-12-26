@@ -1,0 +1,83 @@
+page-device-operate {
+  @include fullPosition;
+  background-color: rgba(0, 0, 0, 0.38);
+  .container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: getColor(white);
+
+    .title-warp {
+      .margin-right-6 {
+        margin-right: 6px;
+      }
+
+      .device-icon {
+        @include heightWidth(24px);
+      }
+
+      .button-md {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    form {
+      @include hw(196px, 100%);
+      position: relative;
+
+      .center-warp {
+        position: absolute;
+        @include fullPosition;
+        @include center;
+        padding-bottom: 32px;
+      }
+
+      .op-type {
+        color: getColor(text-dark);
+        font-size: getFontSize(normal);
+        margin: 16px;
+        font-weight: 700;
+
+        .active-icon {
+          opacity: 0;
+          @include heightWidth(18px)
+        }
+
+        .active-underline {
+          padding: 6px 0;
+        }
+
+        &.active {
+          color: getColor(accent);
+
+          .active-icon {
+            opacity: 1;
+          }
+
+          .active-underline {
+            border-bottom: 1px solid getColor(text-dark-week);
+          }
+        }
+      }
+
+      ion-item {
+        margin: 0;
+        padding: 0;
+        width: 148px;
+        max-width: 148px;
+        input {
+          text-align: right;
+        }
+      }
+
+      .op-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 32px 0 0;
+      }
+    }
+  }
+}

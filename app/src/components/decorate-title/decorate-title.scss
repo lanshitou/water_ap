@@ -1,0 +1,27 @@
+decorate-title {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+
+  &.sub-title {
+    .decorate {
+      background-color: getColor(text-dark-week);
+    }
+    .title {
+      font-size: getFontSize(normal);
+    }
+  }
+
+  .decorate {
+    height: 16px;
+    width: 3px;
+    background-color: getColor(accent);
+  }
+
+  .title {
+    font-size: getFontSize(big);
+    color: getColor(text-dark);
+    font-weight: 700;
+    margin-left: 6px;
+  }
+}

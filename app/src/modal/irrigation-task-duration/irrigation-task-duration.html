@@ -1,0 +1,17 @@
+<div class="container" (click)="$event.stopPropagation()">
+  <div margin class="flex-j-center text-size-large">浇水设置</div>
+  <div class="divider"></div>
+  <form #f="ngForm" (submit)="onSelectDurationClick()">
+    <div class="color-text-dark-week text-size-big" margin>请输入浇水时长</div>
+    <div class="flex-center text-size-normal" margin>
+      <ion-item>
+        <ion-input placeholder="1~1440" name="duration" type="tel" required [(ngModel)]="duration"></ion-input>
+        <div class="color-text-dark-week" item-right>分钟</div>
+      </ion-item>
+    </div>
+    <button type="submit" ion-button full large [disabled]="duration > 1440 || duration < 1">
+      立即浇水
+    </button>
+  </form>
+</div>
+

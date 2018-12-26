@@ -1,0 +1,28 @@
+device-group {
+  margin: 0 12px;
+  width: calc(100% - 24px);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  device {
+    @include hw(null, calc(50% - 6px));
+  }
+
+  & > :nth-child(2n + 0) {
+    margin-left: 6px;
+  }
+
+  & > :nth-child(2n + 1) {
+    margin-right: 6px;
+  }
+
+  & > :nth-child(1n + 3) {
+    margin-top: 12px;
+  }
+
+  .single {
+    @include hw(null, calc(100%));
+    margin: 0;
+  }
+}

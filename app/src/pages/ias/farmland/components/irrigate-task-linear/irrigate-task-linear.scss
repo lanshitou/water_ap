@@ -1,0 +1,15 @@
+irrigate-task-linear {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+
+  svg {
+    width: 64px;
+    path {
+      will-change: stroke-dashoffset;
+      stroke-width: 10px;
+      fill: none;
+      stroke-linecap: round;
+    }
+  }
+}

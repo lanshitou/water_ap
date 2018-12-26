@@ -1,0 +1,25 @@
+page-irrigation-task-duration {
+  @include fullPosition;
+  background-color: rgba(0, 0, 0, 0.38);
+  .container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: getColor(white);
+    form {
+      ion-item {
+        margin: 0;
+        padding: 0;
+        width: 128px;
+        max-width: 128px;
+        input {
+          text-align: right;
+        }
+      }
+      button {
+        margin: 32px 0 0;
+      }
+    }
+  }
+}

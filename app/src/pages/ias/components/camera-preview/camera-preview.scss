@@ -1,0 +1,10 @@
+camera-preview {
+  display: block;
+  height: 96px;
+  margin: 4px 8px;
+  position: relative;
+  width: 55vw;
+  min-width: 55vw;
+  @include center;
+  @include card;
+}

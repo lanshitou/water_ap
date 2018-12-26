@@ -1,0 +1,42 @@
+page-message-list {
+  ion-header {
+    background-color: getColor(white);
+
+    .ios-scroll-bar-hide {
+      height: 50px;
+      overflow: hidden;
+      scroll-y-container {
+        min-height: 70px;
+        border-bottom: 20px;
+      }
+    }
+
+    ion-segment.segment {
+      @include hw(50px,null);
+
+      .segment-button{
+        @include hw(50px,null);
+      }
+
+      .badge {
+        @include heightWidth(8px);
+        @include center();
+        background-color: getColor(danger);
+        font-size: getFontSize(small);
+        margin-left: 6px;
+        border-radius: 50%;
+        color: white;
+      }
+
+      .segment-button:nth-last-of-type(n + 2),
+      .segment-button:nth-last-of-type(n + 2) ~ .segment-button {
+        min-width: 50vw;
+      }
+
+      .segment-button:nth-last-of-type(n + 3),
+      .segment-button:nth-last-of-type(n + 3) ~ .segment-button {
+        min-width: 33vw;
+      }
+    }
+  }
+}

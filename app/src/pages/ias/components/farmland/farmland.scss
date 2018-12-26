@@ -1,0 +1,33 @@
+farmland {
+  @include center;
+  @include card;
+
+  margin: 0 12px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+
+  & > :nth-child(2).half-warp {
+    margin-left: 6px;
+    min-width: calc(50% - 6px);
+  }
+
+  .half-warp {
+    padding: 12px;
+    min-width: 50%;
+
+    img {
+      @include heightWidth(42px);
+      margin-right: 6px;
+    }
+
+    .badge {
+      @include center;
+      @include heightWidth(24px);
+      color: getColor(text-dark);
+      font-size: getFontSize(big);
+      font-weight: 700;
+    }
+  }
+}

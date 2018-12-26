@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>告警详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="ext">
+    <decorate-title>告警类型</decorate-title>
+    <div class="card-warp">
+      <img class="icon" src="./assets/imgs/waring/img_offline.png">
+      <div class="flex-a-center flex-grow flex-j-between">
+        <div class="flex-a-center">
+          <div class="color-text-dark text-size-normal font-bold" margin-right>告警类型:</div>
+          <div class="color-text-dark-week text-size-normal">离线告警</div>
+        </div>
+        <div class="flex-a-center">
+          <div class="color-text-dark text-size-normal font-bold" margin-right>告警状态:</div>
+          <div class="text-size-normal font-bold"
+               [ngClass]="{'color-succeed' : ext.cleared, 'color-danger' : !ext.cleared}">{{ext.cleared
+            ? '已消除' : '告警中'}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <decorate-title>告警详情</decorate-title>
+    <div class="card-warp">
+      <img class="icon" [src]="ext.ext.devType | deviceIcon">
+      <div class="flex-column flex-grow">
+        <div class="color-text-dark text-size-big font-bold">{{ext.addr.devName}}</div>
+        <div class="color-text-dark-week text-size-normal">离线时间: {{ext.ext.offlineTime | date : "yyyy-MM-dd HH:mm"}}
+        </div>
+        <div class="color-text-dark-week text-size-normal" *ngIf="ext.cleared">离线时长: {{((ext.clearTime - ext.ext.offlineTime) | minute)}}
+        </div>
+      </div>
+      <div class="color-danger text-size-normal font-bold">设备离线</div>
+    </div>
+
+    <device-location [data]="ext.addr"></device-location>
+
+    <ng-container *ngIf="ext.produceTime">
+      <decorate-title>产生时间</decorate-title>
+      <div class="card-warp">
+        <img class="icon" src="./assets/imgs/waring/img_waring_produce.png">
+        <div class="flex-column flex-j-between">
+          <div class="flex-a-center">
+            <div class="color-text-dark text-size-normal font-bold" margin-right>告警产生原因:</div>
+            <div class="color-text-dark-week text-size-normal">设备离线10分钟</div>
+          </div>
+          <div class="flex-a-center">
+            <div class="color-text-dark text-size-normal font-bold" margin-right>告警产生时间:</div>
+            <div class="color-text-dark-week text-size-normal">{{ext.produceTime | date: 'MM-dd HH:mm'}}</div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="ext.cleared && ext.clearTime">
+      <decorate-title>恢复时间</decorate-title>
+      <div class="card-warp">
+        <img class="icon" src="./assets/imgs/waring/img_waring_clear.png">
+        <div class="flex-column flex-j-between">
+          <div class="flex-a-center">
+            <div class="color-text-dark text-size-normal font-bold" margin-right>告警消除原因:</div>
+            <div class="color-text-dark-week text-size-normal">设备上线</div>
+          </div>
+          <div class="flex-a-center">
+            <div class="color-text-dark text-size-normal font-bold" margin-right>告警消除时间:</div>
+            <div class="color-text-dark-week text-size-normal">{{ext.clearTime | date: 'MM-dd HH:mm'}}</div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ion-content>

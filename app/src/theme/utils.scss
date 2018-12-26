@@ -1,0 +1,48 @@
+@mixin fullPosition {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin heightWidth($value) {
+  max-height: $value;
+  max-width: $value;
+
+  min-height: $value;
+  min-width: $value;
+
+  height: $value;
+  width: $value;
+}
+
+@mixin position($t,$r,$b,$l) {
+  top: $t;
+  left: $l;
+  bottom: $b;
+  right: $r;
+}
+
+@mixin hw($h,$w) {
+  max-height: $h;
+  max-width: $w;
+
+  min-height: $h;
+  min-width: $w;
+
+  height: $h;
+  width: $w;
+}
+
+@mixin card() {
+  border-radius: 8px;
+  background-color: getColor(white);
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}

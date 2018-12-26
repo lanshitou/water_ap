@@ -1,0 +1,13 @@
+<div class="root-container" *ngIf="state != 3" [style.background-color]="backgroundColor"
+     (click)="tryDo?.call(this)">
+  <progress-spinner *ngIf="state == 2;else error" [color]="progressColor" [mode]="'indeterminate'"
+                    [ngStyle]="{'height':progressRadius * 2 + 'px','width':progressRadius * 2 + 'px'}">
+  </progress-spinner>
+  <ng-template #error>
+    <div class="error-try-container color-text-dark-week" [style.color]="textColor">
+      <img class="error-image" [src]="errorImg">
+      <div class="error">{{errorTip}}</div>
+      <div class="tryTip" *ngIf="tryDo">轻触屏幕 重新获取</div>
+    </div>
+  </ng-template>
+</div>

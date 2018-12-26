@@ -1,0 +1,77 @@
+<div class="left-warp text-size-normal">
+
+  <div class="flex-a-center margin-top-8 height-18">
+    <div class="color-text-dark">状态 :</div>
+    <div class="color-succeed font-bold" [ngClass]="{'color-danger' :  data.result === 3}">{{data.status === 5 ?
+      (data.result |
+      irrigateResultStatus) :
+      (data.status | irrigateTaskStatus)}}
+    </div>
+  </div>
+
+  <div class="flex-a-center margin-top-8 height-18" *ngIf="data.startDate">
+    <div class="color-text-dark">开始时间 :</div>
+    <div class="color-text-dark-week">{{data.startDate | date : "MM-dd HH:mm"}}<span class="forecast-text">{{data.status < 2 ? ' 估': ''}}</span></div>
+  </div>
+
+  <div class="flex-a-center margin-top-8 height-18">
+    <div class="color-text-dark">设置时长 :</div>
+    <div class="color-text-dark-week">{{((data.expDuration * 1000) | numberRound) | minute}}</div>
+  </div>
+
+  <div *ngIf="data.createUser" class="flex-a-center flex-grow single-line margin-top-8">
+    <img #createHeader class="icon" (error)="createHeader.src='./assets/imgs/img_default_head.png'"
+         [src]="data.createUser.headerImage"/>
+    <div class="flex-column single-line">
+      <div class="username single-line">{{data.createUser.username}}</div>
+      <div class="color-text-dark-week text-size-small">创建浇水任务</div>
+    </div>
+  </div>
+
+  <div class="flex-a-center margin-top-8 height-18" *ngIf="data.createDate">
+    <div class="color-text-dark">创建时间 :</div>
+    <div class="color-text-dark-week">{{data.createDate | date : "MM-dd HH:mm"}}</div>
+  </div>
+</div>
+
+
+<div class="divider-v"></div>
+
+<div class="right-warp text-size-normal">
+  <div class="flex-a-center margin-top-8 height-18" *ngIf="data.result === 3;else elseEmptyResult">
+    <div class="color-text-dark">浇水结果 :</div>
+    <div class="color-danger font-bold">{{data.resultDesc}}</div>
+  </div>
+  <ng-template #elseEmptyResult>
+    <div class="margin-top-8 height-18"></div>
+  </ng-template>
+
+  <div class="flex-a-center margin-top-8 height-18" *ngIf="data.stopDate;else elseEmptyStopDate">
+    <div class="color-text-dark">结束时间 :</div>
+    <div class="color-text-dark-week">{{data.stopDate | date : "MM-dd HH:mm"}}<span class="forecast-text">{{data.status < 4 ? ' 估': ''}}</span></div>
+  </div>
+  <ng-template #elseEmptyStopDate>
+    <div class="margin-top-8 height-18"></div>
+  </ng-template>
+
+  <div class="flex-a-center margin-top-8 height-18" *ngIf="data.irriDuration !== undefined && data.status === 5;else elseEmptyIrriDuration">
+    <div class="color-text-dark">灌溉时长 :</div>
+    <div class="color-text-dark-week">{{data.irriDuration > 0 ? ( ((data.irriDuration * 1000) | minute)) :
+      '未开始'}}
+    </div>
+  </div>
+  <ng-template #elseEmptyIrriDuration>
+    <div class="margin-top-8 height-18"></div>
+  </ng-template>
+
+  <div *ngIf="data.stopUser" class="flex-a-center flex-grow single-line margin-top-8">
+    <img #stopHeader class="icon" (error)="stopHeader.src='./assets/imgs/img_default_head.png'"
+         [src]="data.stopUser.headerImage"/>
+    <div class="flex-column single-line">
+      <div class="username single-line">{{data.stopUser.username}}</div>
+      <div class="color-text-dark-week text-size-small">停止浇水任务</div>
+    </div>
+  </div>
+</div>
+
+<div class="status-dot background-color-succeed" [ngClass]="{'background-color-danger' : data.result === 3 }"></div>

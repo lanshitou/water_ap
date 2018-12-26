@@ -1,0 +1,6 @@
+{
+  "ios_identifier": "",
+  "update": "now",
+  "min_native_interface" : 2,
+  "content_url": "http://192.168.123.159:8100/"
+}

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>关于</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="img-container">
+    <img class="logo" src="./assets/imgs/img_logo.png">
+    <div style="margin-top: 8px" class="text-size-normal color-text-dark-week">{{version}}</div>
+  </div>
+
+  <ion-list>
+    <button ion-item navTo="HelpPage">
+      <ion-icon name="call" style="color: rgb(255,179,89)" item-left></ion-icon>
+      <ion-label>联系客服</ion-label>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+
+    <button ion-item navTo="AgreementPage">
+      <ion-icon name="contacts" style="color: rgb(148,217,74)" item-left></ion-icon>
+      <ion-label>服务协议</ion-label>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+  </ion-list>
+
+  <div class="copyright flex-center text-size-tiny color-text-dark-week">
+    {{copyright}}
+  </div>
+</ion-content>

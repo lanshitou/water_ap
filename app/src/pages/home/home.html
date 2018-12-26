@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>首页</ion-title>
+    <ion-buttons right>
+      <button ion-button class="flex-a-center" navTo="WeatherSearchPage">
+        <ion-icon name="pin" class="text-size-huge"></ion-icon>
+        <div margin-left class="text-size-big">{{currentWeatherLocation}}</div>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <weather [data]="currentWeatherData"></weather>
+  <div class="notify-wap" *ngIf="notifyMessageData && notifyMessageData.length > 0">
+    <decorate-title margin-top>重要通知</decorate-title>
+    <important-message *ngFor="let item of notifyMessageData;trackBy: trackById" [data]="item"></important-message>
+  </div>
+  <info-warp *ngFor="let infoWarp of infoData" [data]="infoWarp"></info-warp>
+</ion-content>
+<pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>
+<loading-error-tip></loading-error-tip>

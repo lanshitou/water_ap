@@ -1,0 +1,32 @@
+@import "utils";
+@import "colors";
+@import "font-size";
+@import "layers";
+@import "ionic";
+
+$tabs-md-tab-text-transform-active: none;
+$toolbar-md-title-font-size: getFontSize(big);
+$toolbar-md-background: getColor(primary);
+$tabs-md-tab-min-height: 56px;
+$badge-md-border-radius: 100%;
+$list-md-border-color: getColor(divider);
+$item-md-divider-border-bottom: 0.5px solid $list-md-border-color;
+$label-md-text-color-focused: getColor(text-dark);
+$label-md-text-color: getColor(text-dark);
+$list-md-header-margin-bottom: 0;
+$list-md-header-border-top: none;
+$text-input-md-highlight-color-valid: getColor(succeed);
+$button-md-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .07), 0 3px 1px -2px rgba(0, 0, 0, .1), 0 1px 5px 0 rgba(0, 0, 0, .06);
+$button-md-box-shadow-activated: 0 3px 5px rgba(0, 0, 0, .07), 0 3px 5px rgba(0, 0, 0, .15), 0 0 0 0 transparent;
+$button-md-border-radius: 6px;
+$button-md-font-size: getFontSize(big);
+
+$text-input-md-highlight-color: rgba(getColor(dark), 0.3);
+$text-input-md-highlight-color-valid: rgba(getColor(primary), 0.3);
+$text-input-md-highlight-color-invalid: rgba(getColor(danger), 0.4);
+
+$infinite-scroll-loading-margin-top: 16px;
+$infinite-scroll-loading-margin-bottom: 16px;
+
+$segment-button-md-padding-end: 16px;
+$alert-md-border-radius: 16px;

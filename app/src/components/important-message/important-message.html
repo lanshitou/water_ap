@@ -1,0 +1,8 @@
+<button ion-item (click)="onItemClick()">
+  <div class="color-text-dark text-size-normal font-bold single-line padding-right-54">{{data.title}}</div>
+  <div class="color-text-dark-week text-size-small" style="margin-top: 6px">{{data.content}}</div>
+  <div class="end-container">
+    <div class="color-text-dark-week text-size-tiny">{{data.createDate | recentDate}}</div>
+    <div class="badge" *ngIf="!data.isRead"></div>
+  </div>
+</button>

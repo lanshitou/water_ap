@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "./myKey.jks",
+            "storePassword": "my943813636",
+            "alias": "key0",
+            "password" : "my9438136360",
+            "keystoreType": "jks"
+        },
+        "release": {
+          "keystore": "./myKey.jks",
+            "storePassword": "my943813636",
+            "alias": "key0",
+            "password" : "my9438136360",
+            "keystoreType": "jks"
+        }
+    }
+}

@@ -1,0 +1,2 @@
+<dc-point *ngFor="let s of data;trackBy : trackById;index as i" [data]="s"
+          [visibleDelay]="firstVisible | dcPointVisibleDelay : i "></dc-point>

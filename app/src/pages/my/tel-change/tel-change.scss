@@ -1,0 +1,27 @@
+page-tel-change {
+  ion-list.list {
+    @include card;
+    margin: 12px;
+
+    .fix-length {
+      min-width: 64px;
+    }
+
+    .tel-warp {
+      margin-right: 72px;
+    }
+
+    .verify-warp {
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      right: 8px;
+      margin: 0;
+      height: calc(100% - 16px);
+    }
+  }
+
+  ion-item input {
+    border: none;
+  }
+}

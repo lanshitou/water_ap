@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>个人信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="input-img-warp" style="display: none">
+    <input #inputCamera type="file" accept="image/*" capture (change)="updateImage()">
+    <input ##inputGallery type="file" accept="image/*" (change)="updateImage()">
+  </div>
+
+  <decorate-title>基本信息</decorate-title>
+  <ion-list>
+    <button ion-item (click)="onEditImageHeaderClick()">
+      <ion-label>头像</ion-label>
+      <img #header class="header-img" (error)="header.src='./assets/imgs/img_default_head.png'" [src]="data.headerImage"
+           item-right>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+    <button ion-item navTo="NickNameEditPage" [params]="data">
+      <ion-label>昵称</ion-label>
+      <div class="text-size-normal color-text-dark-week" item-right>{{data.nickName}}</div>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+    <button ion-item navTo="TelChangePage" [params]="data">
+      <ion-label>手机号</ion-label>
+      <div class="text-size-normal color-text-dark-week" item-right>{{data.mobile}}</div>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+    <button ion-item navTo="ChangePasswordPage">
+      <ion-label>修改密码</ion-label>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

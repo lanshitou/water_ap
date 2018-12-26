@@ -1,0 +1,74 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>消息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="data">
+    <ion-list>
+      <button ion-item navTo="MessageListPage" [params]="1">
+        <ion-avatar item-left>
+          <img src="./assets/imgs/message/img_notify.png">
+        </ion-avatar>
+        <div class="text-size-normal font-bold color-text-dark">通知</div>
+        <div class="text-size-small color-text-dark-week single-line">{{data.notify.title ? data.notify.title :
+          '暂无相关消息'}}
+        </div>
+        <ion-badge *ngIf="data.notify.unreadCount > 0" item-right>{{data.notify.unreadCount > 9 ? '9+' :
+          data.notify.unreadCount}}
+        </ion-badge>
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <div style="padding: 16px 16px 8px;position: relative">
+        <div class="text-size-normal font-bold color-text-dark">系统运行状态消息</div>
+        <div class="divider" margin-top></div>
+      </div>
+      <button ion-item navTo="MessageListPage" [params]="2">
+        <ion-avatar item-left>
+          <img src="./assets/imgs/message/img_irrigate.png">
+        </ion-avatar>
+        <div class="text-size-normal font-bold color-text-dark">灌溉任务</div>
+        <div class="text-size-small color-text-dark-week single-line">{{data.irrigate.title ? data.irrigate.title :
+          '暂无相关消息'}}
+        </div>
+        <ion-badge *ngIf="data.irrigate.unreadCount > 0" item-right>{{data.irrigate.unreadCount > 9 ? '9+' :
+          data.irrigate.unreadCount}}
+        </ion-badge>
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+      </button>
+      <button ion-item navTo="MessageListPage" [params]="3">
+        <ion-avatar item-left>
+          <img src="./assets/imgs/message/img_offline.png">
+        </ion-avatar>
+        <div class="text-size-normal font-bold color-text-dark">设备离线</div>
+        <div class="text-size-small color-text-dark-week single-line">{{data.offline.title ? data.offline.title :
+          '暂无相关消息'}}
+        </div>
+        <ion-badge *ngIf="data.offline.unreadCount > 0" item-right>{{data.offline.unreadCount > 9 ? '9+' :
+          data.offline.unreadCount}}
+        </ion-badge>
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+      </button>
+      <button ion-item navTo="MessageListPage" [params]="4">
+        <ion-avatar item-left>
+          <img src="./assets/imgs/message/img_alarm.png">
+        </ion-avatar>
+        <div class="text-size-normal font-bold color-text-dark">阈值告警</div>
+        <div class="text-size-small color-text-dark-week single-line">{{data.alarm.title ? data.alarm.title :
+          '暂无相关消息'}}
+        </div>
+        <ion-badge *ngIf="data.alarm.unreadCount > 0" color="danger" item-right>{{data.alarm.unreadCount > 9 ? '9+' :
+          data.alarm.unreadCount}}
+        </ion-badge>
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+      </button>
+    </ion-list>
+  </ng-container>
+</ion-content>
+
+<pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>
+<loading-error-tip></loading-error-tip>

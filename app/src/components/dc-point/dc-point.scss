@@ -1,0 +1,26 @@
+dc-point {
+  display: block;
+  padding: 12px;
+  position: relative;
+  @include card;
+
+  .dc-point-icon {
+    border-radius: 50%;
+    @include heightWidth(42px)
+  }
+
+  .margin-top-12 {
+    margin-top: 12px;
+  }
+
+  .sort-name {
+    margin-left: 4px;
+  }
+
+  .waring-icon {
+    position: absolute;
+    @include heightWidth(16px);
+    right: 12px;
+    bottom: 6px;
+  }
+}

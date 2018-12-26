@@ -1,0 +1,16 @@
+page-sign-in-detail, page-forget-password-detail {
+  .main-container {
+    .vcode {
+      @include center;
+      flex-direction: column;
+      margin-top: 16px;
+      font-size: getFontSize(normal);
+      color: #38424e;
+    }
+
+    .disable-tip {
+      pointer-events: none;
+      color: getColor(text-dark-week) !important;
+    }
+  }
+}

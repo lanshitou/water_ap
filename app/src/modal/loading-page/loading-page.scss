@@ -1,0 +1,52 @@
+loading-page {
+  @include fullPosition;
+  background-color: rgba(255, 255, 255, 0.98);
+  padding: 16px;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-direction: column;
+
+  .status-container {
+    @include center;
+    flex-direction: column;
+    load-status-anime {
+      margin-top: 32px;
+      @include heightWidth(108px)
+    }
+
+    .status-text {
+      color: getColor(text-dark);
+      font-size: getFontSize(big);
+      margin-top: 16px;
+    }
+  }
+
+  .tip-container {
+    align-self: flex-start;
+
+    .tip-top {
+      display: flex;
+      align-items: center;
+
+      .tip-icon {
+        margin-left: 8px;
+        height: 24px;
+        width: 24px;
+      }
+
+      .tip-title {
+        margin-left: 16px;
+        font-size: getFontSize(big);
+        color: getColor(text-dark);
+      }
+    }
+
+    .tip-content {
+      margin: 16px 16px 64px;
+      font-size: getFontSize(normal);
+      color: getColor(text-dark-week);
+    }
+
+  }
+}

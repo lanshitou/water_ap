@@ -1,0 +1,129 @@
+page-camera-list {
+  ion-header {
+    &.header:after {
+      display: none;
+    }
+    & ion-toolbar {
+      .toolbar-background {
+        background-color: transparent;
+      }
+      * {
+        color: getColor(text-light) !important;
+      }
+    }
+  }
+
+  ion-content {
+    .scroll-content {
+      margin-top: 0 !important;
+
+      .video-root-container {
+        position: relative;
+        margin-bottom: 40px;
+
+        .left {
+          background: url("../assets/imgs/pts/left_twinkle.png");
+          left: 8px;
+          top: calc(50% - 28px);
+        }
+
+        .right {
+          background: url("../assets/imgs/pts/right_twinkle.png");
+          right: 8px;
+          top: calc(50% - 28px);
+        }
+
+        .up {
+          background: url("../assets/imgs/pts/up_twinkle.png");
+          top: 8px;
+          left: calc(50% - 28px);
+        }
+
+        .down {
+          background: url("../assets/imgs/pts/down_twinkle.png");
+          bottom: 8px;
+          left: calc(50% - 28px);
+        }
+
+        .left, .right, .up, .down {
+          position: absolute;
+          background-size: contain;
+          display: none;
+          @include heightWidth(56px);
+        }
+      }
+
+      .ptz-controller {
+        position: relative;
+        padding-top: 16px;
+        width: 100%;
+
+        decorate-title {
+          margin-left: 8px;
+        }
+
+        joystick {
+          margin: 24px auto 0;
+          height: 232px;
+          width: 232px;
+        }
+
+        .zoom\+ {
+          &:active {
+            opacity: 1;
+          }
+
+          position: absolute;
+          bottom: 24px;
+          right: 24px;
+          @include heightWidth(48px);
+          opacity: 0.9;
+          background: url("../assets/imgs/pts/platform_transverse_enlarge_normal.png");
+          background-size: contain;
+        }
+
+        .zoom\- {
+          &:active {
+            opacity: 1;
+          }
+
+          position: absolute;
+          bottom: 24px;
+          left: 24px;
+          @include heightWidth(48px);
+          opacity: 0.9;
+          background: url("../assets/imgs/pts/platform_transverse_narrow_normal.png");
+          background-size: contain;
+        }
+      }
+
+      .monitory-point-container {
+        width: 100%;
+        padding: 16px;
+        display: flex;
+        overflow-y: hidden;
+        overflow-x: scroll;
+
+        .monitory-point + .monitory-point {
+          margin-left: 16px;
+        }
+        .monitory-point {
+          position: relative;
+          width: 40vw;
+          min-width: 40vw;
+          height: 22.5vw;
+          @include center;
+          color: white;
+          border-radius: 12px;
+          box-shadow: 0 0 6px getColor(shadow-dark);
+          background: linear-gradient(135deg, lighten(getColor(text-dark-week), 10%), getColor(text-dark-week));
+
+          &.active {
+            background: linear-gradient(135deg, getColor(primary), darken(getColor(primary), 15%));
+          }
+        }
+      }
+    }
+  }
+
+}

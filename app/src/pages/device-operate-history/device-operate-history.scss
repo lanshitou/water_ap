@@ -1,0 +1,38 @@
+page-device-operate-history {
+  .scroll-content {
+    .card-warp {
+      @include card;
+      position: relative;
+      margin: 12px;
+      padding: 12px;
+
+      .title-warp {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .content-warp {
+        margin-left: 40px;
+        margin-top: 16px;
+
+        .item-warp + .item-warp {
+          margin-top: 8px;
+        }
+      }
+
+      .margin-left-6 {
+        margin-left: 6px;
+      }
+
+      .margin-left-16 {
+        margin-left: 16px;
+      }
+
+      .icon {
+        @include heightWidth(24px);
+        border-radius: 50%;
+      }
+    }
+  }
+}

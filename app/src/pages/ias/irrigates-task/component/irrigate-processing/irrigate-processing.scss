@@ -1,0 +1,47 @@
+irrigate-processing {
+  &.hidden {
+    display: none;
+  }
+
+  .scroll-content, .fixed-content {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .card-warp {
+      @include card;
+      width: calc(100% - 24px);
+      margin: 12px;
+      padding: 4px 12px 12px;
+
+      .item-warp {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        .item-left {
+          font-size: getFontSize(normal);
+          color: getColor(text-dark-week);
+          margin-right: 16px;
+        }
+        .item-right {
+          font-size: getFontSize(normal);
+          color: getColor(text-dark);
+          width: 0;
+          flex: 1;
+
+          .icon {
+            @include heightWidth(24px);
+            margin-right: 8px;
+          }
+
+          &.color-succeed {
+            color: getColor(succeed);
+          }
+
+          &.color-danger {
+            color: getColor(danger);
+          }
+        }
+      }
+    }
+  }
+}

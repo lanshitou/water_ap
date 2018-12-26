@@ -1,0 +1,16 @@
+<ion-content>
+  <div class="card-warp" *ngFor="let item of data;trackBy: trackById" (click)="onItemClick(item)">
+    <button ion-item>
+      <ion-avatar item-start><img src="{{type | getWaringIcon}}"></ion-avatar>
+      <div class="color-text-dark text-size-normal font-bold">{{item.title}}</div>
+      <div class="color-text-dark-week text-size-small" style="margin-top: 6px">{{item.summary}}</div>
+      <div class="end-container" item-end>
+        <div class="color-text-dark-week text-size-tiny">{{item.produceTime | recentDate}}</div>
+      </div>
+    </button>
+  </div>
+
+  <pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>
+  <load-more (onLoadMore)="getData(3)"></load-more>
+</ion-content>
+<loading-error-tip></loading-error-tip>

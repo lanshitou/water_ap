@@ -1,0 +1,69 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons *ngIf="data" right navTo="UserDetailPage" [params]="data">
+      <button ion-button clear icon-only>
+        <ion-icon color="light" name="md-settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="header-container">
+    <img #header class="header-img" (error)="header.src='./assets/imgs/img_default_head.png'" [src]="data?.headerImage">
+    <div class="text-container">
+      <div class="username">{{data?.nickName}}</div>
+      <div class="tel">{{data?.mobile}}</div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="notifications" style="color: rgb(253,123,83)" item-left></ion-icon>
+      <ion-label>接收通知</ion-label>
+      <ion-toggle [(ngModel)]="configProvider.receiveMessageEv.value" item-right></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="timer" style="color: rgb(76,166,237)" item-left></ion-icon>
+      <ion-label>自动刷新间隔</ion-label>
+      <ion-select cancelText="取消" [(ngModel)]="configProvider.refreshTimeEv.value" interface="action-sheet" item-right>
+        <ion-option [value]="1000 * 30">30秒</ion-option>
+        <ion-option [value]="1000 * 60">1分钟</ion-option>
+        <ion-option [value]="1000 * 60 * 2">2分钟</ion-option>
+        <ion-option [value]="1000 * 60 * 3">3分钟</ion-option>
+        <ion-option [value]="1000 * 60 * 5">5分钟</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item navTo="HelpPage">
+      <ion-icon name="call" style="color: rgb(255,179,89)" item-left></ion-icon>
+      <ion-label>联系客服</ion-label>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+
+    <button ion-item (click)="onCheckUpdateClick()">
+      <ion-icon name="refresh" style="color: rgb(76,166,237)" item-left></ion-icon>
+      <ion-label>检查更新</ion-label>
+      <div class="text-size-small color-text-dark-week" item-right>{{version}}</div>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+
+    <button ion-item navTo="AboutPage">
+      <ion-icon name="contacts" style="color: rgb(148,217,74)" item-left></ion-icon>
+      <ion-label>关于我们</ion-label>
+      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+    </button>
+  </ion-list>
+
+  <button style="height: 48px" class="quit-button" ion-button round clear full color="light"
+          (click)="onLoginOut()">
+    <ion-icon name="log-out"></ion-icon>
+    <div>退出登陆</div>
+  </button>
+
+</ion-content>
+
+<loading-error-tip></loading-error-tip>

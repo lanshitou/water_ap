@@ -1,0 +1,14 @@
+<div class="flex-a-center">
+  <img class="image" src="./assets/imgs/img_irrigate.png">
+
+  <div>
+    <div class="text-size-big color-text-dark font-bold single-line">{{data.name}}</div>
+    <div *ngIf="data.task && data.task.status !== 5"
+         class="text-size-normal font-bold color-succeed marin-top-4 single-line"
+         [ngClass]="{'color-danger' : !data.enable}">{{
+      data.task.status | irrigateTaskStatus}}
+    </div>
+  </div>
+</div>
+
+<ion-icon class="select-container" [class.selected]="data.selected" name="checkmark-circle"></ion-icon>

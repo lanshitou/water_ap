@@ -1,0 +1,26 @@
+message-item {
+  display: block;
+
+  ion-label {
+    white-space: initial;
+    .padding-right-54 {
+      padding-right: 54px;
+    }
+  }
+
+  .end-container {
+    position: absolute;
+    top: 14px;
+    right: 8px;
+
+    display: flex;
+    align-items: center;
+
+    .badge {
+      margin-left: 8px;
+      border-radius: 50%;
+      background-color: getColor(danger);
+      @include heightWidth(14px)
+    }
+  }
+}

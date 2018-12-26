@@ -1,0 +1,41 @@
+joystick {
+  display: block;
+  position: relative;
+  contain: strict;
+
+  background: url("../assets/imgs/pts/platform_transverse_handle_normal.png");
+  background-size: contain;
+
+  .left {
+    background: url("../assets/imgs/pts/platform_transverse_handle_left.png");
+  }
+
+  .right {
+    background: url("../assets/imgs/pts/platform_transverse_handle_right.png");
+  }
+
+  .up {
+    background: url("../assets/imgs/pts/platform_transverse_handle_up.png");
+  }
+
+  .down {
+    background: url("../assets/imgs/pts/platform_transverse_handle_down.png");
+  }
+
+  .left, .right, .up, .down {
+    position: absolute;
+    background-size: contain;
+    display: none;
+    @include heightWidth(100%);
+    @include fullPosition;
+  }
+
+  .nipple {
+    & > .back {
+      display: none !important;
+    }
+    & > .front {
+      opacity: 1 !important;
+    }
+  }
+}

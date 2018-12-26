@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{waringType | getWaringType}}</ion-title>
+  </ion-toolbar>
+  <ion-segment [(ngModel)]="selectSegment">
+    <ion-segment-button [value]="1" (ionSelect)="selectSegment = 1">
+      当前告警
+    </ion-segment-button>
+    <ion-segment-button [value]="2" (ionSelect)="selectSegment = 2">
+      历史告警
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <waring-list [isHistory]="false" [type]="waringType" [show]="selectSegment === 1"></waring-list>
+  <waring-list [isHistory]="true" [type]="waringType" [show]="selectSegment === 2"></waring-list>
+</ion-content>

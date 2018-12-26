@@ -1,0 +1,14 @@
+<div class="user-warp">
+  <div class="header-img" img-load="{{data.user.headerImage}}" imgError="./assets/imgs/img_default_head.png"></div>
+  <div class="user-name">{{data.user.username}}</div>
+</div>
+<div class="comment-warp">{{data.content}}</div>
+<div class="other-warp">
+  <div class="comment-time">{{data.publishTime | recentDate}}</div>
+  <div class="comment-like-warp" [ngClass]="{'is-like': data.isLike , 'click-like': clickLikeComment}"
+       (click)="data.isLike ? undefined : likeComment()">
+    <div class="comment-count">{{data.likeCount}}</div>
+    <ion-icon class="comment-like" name="md-thumbs-up"></ion-icon>
+  </div>
+</div>
+

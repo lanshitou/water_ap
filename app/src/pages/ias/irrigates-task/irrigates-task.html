@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>灌溉管理</ion-title>
+  </ion-toolbar>
+  <ion-segment [(ngModel)]="selectSegment">
+    <ion-segment-button [value]="0" (ionSelect)="selectSegment = 0">
+      任务预览
+    </ion-segment-button>
+    <ion-segment-button [value]="1" (ionSelect)="selectSegment = 1">
+      一键浇水
+    </ion-segment-button>
+    <ion-segment-button [value]="2" (ionSelect)="selectSegment = 2">
+      停止浇水
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <irrigate-processing [show]="selectSegment === 0"></irrigate-processing>
+  <irrigate-task-list [isAddIrrigate]="true" [show]="selectSegment === 1"></irrigate-task-list>
+  <irrigate-task-list [isAddIrrigate]="false" [show]="selectSegment === 2"></irrigate-task-list>
+</ion-content>
+

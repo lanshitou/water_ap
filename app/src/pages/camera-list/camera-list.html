@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="video-root-container">
+    <video-player></video-player>
+    <div #left class="left"></div>
+    <div #up class="up"></div>
+    <div #right class="right"></div>
+    <div #down class="down"></div>
+  </div>
+
+  <!--云台控制-->
+  <div class="ptz-controller">
+    <decorate-title>云台控制 {{data?.capability?.support_ptz === '1' ? '' : '(摄像头不支持控制)'}}</decorate-title>
+    <joystick [config]="joystickConfig" (onMoveEvent)="onJoystickEvent($event)"></joystick>
+    <div class="zoom+" (click)="ptzControl(11)"></div>
+    <div class="zoom-" (click)="ptzControl(10)"></div>
+  </div>
+
+  <decorate-title style="margin: 24px 0 0 11px">监控点切换</decorate-title>
+  <div class="monitory-point-container">
+    <div class="monitory-point" *ngFor="let p of cameraList"
+         [class.active]="p.id === data.id" (click)="onMonitoryClick(p)">{{p.name}}
+    </div>
+  </div>
+
+</ion-content>
+<loading-error-tip></loading-error-tip>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>修改昵称</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <ion-content>
+    <form #f="ngForm" (submit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <div class="flex-a-center">
+            <div class="color-text-dark-week" margin-right>昵称</div>
+            <input class="flex-grow" type="tel" name="nickName" placeholder="请输入新昵称 1~12字之间"
+                   pattern="^[\d\w\u4e00-\u9fa5]{1,12}$" required
+                   [(ngModel)]="nickName">
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <div padding style="width: 100%">
+        <button ion-button full round color="accent" type="submit" [disabled]="!f.dirty || !f.valid">提交</button>
+      </div>
+    </form>
+  </ion-content>

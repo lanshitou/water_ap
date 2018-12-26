@@ -1,0 +1,45 @@
+$selfColors: (
+  runing : #63a6ff,
+  white : #ffffff,
+  content : rgb(247, 249, 250),
+  divider: #f0f0f0,
+  shadow : #e5e5e5,
+  shadow-dark : #cecece,
+  text-dark : #212121,
+  text-dark-week : #757575,
+  text-light : #f4f4f4,
+  text-light-week : #eeeeee,
+  tag-background-color: #f3f3f3,
+);
+
+$colors: (
+  primary: #537cfa,
+  secondary: #5e83fa,
+  accent: #5e83fa,
+  succeed : #69bf85,
+  danger: #FF2C4C,
+  light: #f4f4f4,
+  dark: #212121
+);
+
+@function getColor($value) {
+  $merge: map_merge($colors, $selfColors);
+  @if map_has_key($merge, $value) {
+    @return map_get($merge, $value);
+  }
+
+  @warn "the key #{value} is not in the colors";
+  @return null;
+}
+
+@each $name, $value in map_merge($colors, $selfColors) {
+  .background-color-#{$name} {
+    background-color: $value;
+  }
+  .color-#{$name} {
+    color: $value;
+  }
+  .border-color-#{$name} {
+    border-color: $value;
+  }
+}

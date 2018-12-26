@@ -1,0 +1,42 @@
+page-article {
+  .article-html-warp {
+    background-color: white;
+    display: flex;
+    padding: 0 16px;
+  }
+
+  .article-operate-warp {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding-bottom: 32px;
+    flex-wrap: wrap;
+
+    .title-decorate-warp {
+      margin: 16px 16px 5px;
+
+      .operate-text {
+        font-size: getFontSize(small);
+        color: getColor(text-dark-week);
+        min-width: max-content;
+        margin-right: 16px;
+      }
+
+    }
+
+    .tag-warp {
+      flex-wrap: wrap;
+    }
+
+    .tag-item {
+      font-weight: 700;
+      color: getColor(text-dark-week);
+      font-size: getFontSize(normal);
+      background-color: getColor(tag-background-color);
+      border-radius: 16px;
+      padding: 4px 16px;
+      margin: 11px;
+    }
+
+  }
+}

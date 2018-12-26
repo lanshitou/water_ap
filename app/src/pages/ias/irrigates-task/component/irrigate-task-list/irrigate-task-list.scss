@@ -1,0 +1,32 @@
+irrigate-task-list {
+  &.hidden {
+    display: none;
+  }
+
+  .scroll-content, .fixed-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .title-container {
+    padding: 16px 16px 0;
+    decorate-title {
+      padding: 0;
+    }
+  }
+
+  .farmland-container {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+
+    irrigate-task-block {
+      margin-top: 16px;
+      margin-left: 16px;
+    }
+  }
+
+  ion-fab {
+    margin-bottom: 24px;
+  }
+}

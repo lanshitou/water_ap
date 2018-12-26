@@ -1,0 +1,15 @@
+<div class="title-container">
+  <div class="title">评论</div>
+  <div class="divider"></div>
+</div>
+<div class="root-container">
+  <comment-item *ngFor="let item of myCommentData;trackBy: trackById" [data]="item"></comment-item>
+  <comment-item *ngFor="let item of data;trackBy: trackById" [data]="item"></comment-item>
+  <div *ngIf="!canMore && (myCommentData.length + data.length) > 0" class="show-more-warp">
+    <div class="show-more-bg"></div>
+    <div class="show-more-button" (click)="getData(3);canMore = true;">查看全部</div>
+  </div>
+  <loading-error-tip backgroundColor="#ffffff"></loading-error-tip>
+  <load-more [style.display]=" canMore ? '' : 'none'" (onLoadMore)="canMore ? getData(3) : undefined"></load-more>
+</div>
+

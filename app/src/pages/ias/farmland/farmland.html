@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>园区详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="data?.dcPoints">
+    <decorate-title>环境信息</decorate-title>
+    <dc-point-group [data]="data.dcPoints"></dc-point-group>
+  </ng-container>
+
+  <ng-container *ngIf="data?.devices">
+    <decorate-title>可操作设备</decorate-title>
+    <device-group [data]="data.devices"></device-group>
+  </ng-container>
+
+  <ng-container *ngIf="data?.irrigates">
+    <shake-irrigate *ngFor="let irrigate of data.irrigates;trackBy: trackById" [data]="irrigate">
+      <decorate-title>{{irrigate.name}}</decorate-title>
+      <ng-container *ngIf="irrigate.dcPoints">
+        <decorate-title [subTitle]="true">实时数据</decorate-title>
+        <dc-point-group title="采集值" [data]="irrigate.dcPoints"></dc-point-group>
+      </ng-container>
+      <ng-container *ngIf="irrigate.valves">
+        <decorate-title [subTitle]="true">阀门</decorate-title>
+        <device-group [data]="irrigate.valves"></device-group>
+      </ng-container>
+      <ng-container *ngIf="irrigate?.devices">
+        <decorate-title [subTitle]="true">设备</decorate-title>
+        <device-group [data]="irrigate.devices"></device-group>
+      </ng-container>
+      <ng-container *ngIf="irrigate?.task">
+        <decorate-title [subTitle]="true">{{irrigate?.task?.status === 5 ? '上次浇水' : '本次浇水'}}</decorate-title>
+        <irrigate-task-history-simple [data]="irrigate.task" navTo="IrrigateTaskHistoryPage"
+                                      [params]="{irrigateId:  irrigate.id,irrigateName:  irrigate.name}"></irrigate-task-history-simple>
+      </ng-container>
+    </shake-irrigate>
+  </ng-container>
+
+  <ion-fab *ngIf="data?.mode === 2" right bottom>
+    <button ion-fab color="succeed" navTo="IrrigatesTaskPage" [params]="true">
+      <ion-icon name="water"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
+<loading-error-tip></loading-error-tip>
+<pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>

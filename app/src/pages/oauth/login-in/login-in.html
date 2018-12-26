@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="flex-a-center header-container">
+    <button ion-button clear (click)="onLocationClick()" [disabled]="!this.isDev">{{this.isDev ? '地址' : ''}}</button>
+  </div>
+
+  <div class="main-container">
+    <div class="title" (click)="becomeDevClick()">欢迎回到众智新农</div>
+    <form #f="ngForm" (submit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="请输入手机号" [clearInput]="true" name="tel" type="tel"
+                     maxlength="11" minlength="11" required
+                     [(ngModel)]="tel"></ion-input>
+        </ion-item>
+        <div class="error-des">请输入正确的手机号</div>
+        <ion-item>
+          <ion-input placeholder="请输入密码" [clearInput]="true" name="password"
+                     [type]="passwordVisible ? 'text' : 'password'"
+                     pattern="^[a-zA-Z0-9]{6,12}$" required
+                     [(ngModel)]="password"></ion-input>
+          <button type="button" class="password-visible" ion-button icon-only clear item-right
+                  (tap)="passwordVisible = !passwordVisible;">
+            <ion-icon [name]="passwordVisible ? 'eye' : 'eye-off'"></ion-icon>
+          </button>
+        </ion-item>
+        <div class="error-des">仅允许大小写字母与数字的组合 6到12位</div>
+      </ion-list>
+      <button class="submit-button" type="submit" ion-button full large [disabled]="!f.dirty || !f.valid">登录</button>
+    </form>
+    <div class="tip" (click)="onHelp()">登录遇到问题</div>
+  </div>
+
+  <div ion-fixed class="copyright flex-center text-size-tiny color-text-dark-week">
+    {{copyright}}
+  </div>
+</ion-content>

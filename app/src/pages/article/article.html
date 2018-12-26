@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="contentCmp.scrollToBottom(200)">
+        <ion-icon name="md-text"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{articleData?.article?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="articleData">
+    <div class="article-html-warp">
+      <div [innerHtml]="articleData.article.htmlContent"></div>
+    </div>
+
+    <div class="article-operate-warp">
+      <div class="flex-a-center title-decorate-warp">
+        <div class="operate-text">投诉分享</div>
+        <div class="divider"></div>
+      </div>
+      <div class="flex-a-center flex-j-between">
+        <div class="tag-item" (click)="onReportClick()">内容投诉</div>
+        <div class="tag-item" (click)="onShareClick()">分享</div>
+      </div>
+
+      <ng-container *ngIf="articleData.article.tag">
+        <div class="flex-a-center title-decorate-warp">
+          <div class="operate-text">文章标签</div>
+          <div class="divider"></div>
+        </div>
+        <div class="flex-a-center tag-warp">
+          <div class="tag-item" *ngFor="let tag of articleData.article.tag">{{tag}}</div>
+        </div>
+      </ng-container>
+    </div>
+
+    <info-warp [data]="articleData.relateArticleList" margin-top></info-warp>
+  </ng-container>
+
+  <comment-warp #commentWarp [articleId]="articleId"></comment-warp>
+  <comment-publish ion-fixed [content]="contentCmp" [articleId]="articleId"
+                   [ele]="commentWarp.ele" (onSubmitComment)="commentWarp.submitComment($event)">
+  </comment-publish>
+</ion-content>
+
+<loading-error-tip></loading-error-tip>

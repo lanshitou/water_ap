@@ -1,0 +1,30 @@
+waring-list {
+  &.hidden {
+    display: none;
+  }
+
+  &.isHistory {
+    ion-avatar img {
+      filter: grayscale(1);
+    }
+  }
+
+  .scroll-content, .fixed-content {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .card-warp {
+      @include card;
+      width: calc(100% - 24px);
+      margin: 12px;
+
+      .item-md .item-inner {
+        border: none;
+
+        ion-label {
+          white-space: initial;
+        }
+      }
+    }
+  }
+}

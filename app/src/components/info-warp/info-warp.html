@@ -1,0 +1,90 @@
+<decorate-title *ngIf="data.warpTitle">{{data.warpTitle}}</decorate-title>
+<ng-container [ngSwitch]="data.warpType">
+  <!--一行两个 左右排布-->
+  <ng-container *ngSwitchCase="1">
+    <ion-grid class="warp-1">
+      <ion-row>
+        <ion-col col-6 *ngFor="let item of data.content;trackBy:trackById" (click)="onItemClick(item)">
+          <div class="img-warp">
+            <div class="img" [img-load]="item.img"></div>
+            <div class="watch-warp">
+              <ion-icon name="eye"></ion-icon>
+              <div class="watch-count">{{item.watchCount}}</div>
+            </div>
+          </div>
+
+          <div class="title-warp">
+            <div class="info-type">{{item.type | infoType}}</div>
+            <div class="title">{{item.title}}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+  <!--一行一个 大图模式-->
+  <ng-container *ngSwitchCase="2">
+    <div class="warp-2" *ngFor="let item of data.content;trackBy:trackById" (click)="onItemClick(item)">
+      <div class="img-warp">
+        <div class="img" [img-load]="item.originImg"></div>
+        <div class="watch-warp">
+          <ion-icon name="eye"></ion-icon>
+          <div class="watch-count">{{item.watchCount}}</div>
+        </div>
+      </div>
+
+      <div class="title-warp">
+        <div class="info-type">{{item.type | infoType}}</div>
+        <div class="title">{{item.title}}</div>
+      </div>
+    </div>
+  </ng-container>
+  <!--一行一个 小图模式-->
+  <ng-container *ngSwitchCase="3">
+    <div class="warp-3" *ngFor="let item of data.content;trackBy:trackById" (click)="onItemClick(item)">
+      <div class="img-warp">
+        <div class="img" [img-load]="item.img"></div>
+      </div>
+
+      <div class="text-warp">
+        <div class="title-warp">
+          <div class="info-type">{{item.type | infoType}}</div>
+          <div class="title">{{item.title}}</div>
+        </div>
+
+        <div class="watch-time-warp">
+          <div class="watch-warp">
+            <ion-icon name="eye"></ion-icon>
+            <div class="text">{{item.watchCount}}</div>
+          </div>
+          <div class="timer-warp">
+            <ion-icon name="timer"></ion-icon>
+            <div class="text">{{item.publishTime | recentDate}}</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="origin-warp">来源: {{item.origin}}</div>
+      </div>
+    </div>
+  </ng-container>
+  <!--横向滚动 大图模式-->
+  <ng-container *ngSwitchCase="4">
+    <scroll-y-container [paddingEnd]="6" [paddingStart]="6">
+      <div class="warp-4" *ngFor="let item of data.content;trackBy:trackById" (click)="onItemClick(item)">
+        <div class="img-warp">
+          <div class="img" [img-load]="item.img"></div>
+          <div class="watch-warp">
+            <ion-icon name="eye"></ion-icon>
+            <div class="watch-count">{{item.watchCount}}</div>
+          </div>
+        </div>
+
+        <div class="title-warp">
+          <div class="info-type white">{{item.type | infoType}}</div>
+          <div class="title">{{item.title}}</div>
+        </div>
+      </div>
+    </scroll-y-container>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,26 @@
+$font-size: (
+  micro : 8px,
+  tiny : 10px,
+  small : 12px,
+  normal : 13px,
+  big : 16px,
+  large : 18px,
+  great : 20px,
+  huge : 22px,
+  huge-x : 24px,
+  huge-xx : 32px,
+);
+
+@function getFontSize($value) {
+  @if map_has_key($font-size, $value) {
+    @return map_get($font-size, $value);
+  }
+  @warn "the key #{value} is not in the fonts";
+  @return null;
+}
+
+@each $name, $value in $font-size {
+  .text-size-#{$name} {
+    font-size: $value;
+  }
+}

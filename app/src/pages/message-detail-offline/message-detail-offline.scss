@@ -1,0 +1,20 @@
+page-message-detail-offline {
+  .scroll-content {
+    & > decorate-title {
+      margin: 16px 12px 8px 8px
+    }
+
+    .card-warp {
+      @include card;
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      margin: 12px;
+      .icon {
+        @include heightWidth(36px);
+        border-radius: 50%;
+        margin-right: 16px;
+      }
+    }
+  }
+}

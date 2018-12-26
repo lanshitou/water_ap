@@ -1,0 +1,27 @@
+<ion-content>
+  <ng-container *ngFor="let farmland of data;trackBy: trackById">
+    <div class="title-container flex-j-between flex-a-center" (click)="onSelectAllChange(farmland)">
+      <decorate-title>{{farmland.name}}</decorate-title>
+      <div class="flex-a-center">
+        <ion-checkbox [checked]="farmland.selectedSize > 0 && farmland.selectedSize === farmland.selectableSize"
+                      [disabled]="farmland.selectableSize <= 0"
+                      (click)="onSelectAllChange(farmland)"></ion-checkbox>
+        <div class="text-size-normal color-text-dark-week" style="margin-left: 8px">
+          {{farmland.selectedSize}} / {{farmland.selectableSize}}
+        </div>
+      </div>
+    </div>
+    <div class="farmland-container">
+      <irrigate-task-block *ngFor="let irri of farmland.irrigates;trackBy: trackById"
+                           [data]="irri" (onTaskSelectChange)="onTaskSelectChange(farmland,$event)">
+      </irrigate-task-block>
+    </div>
+  </ng-container>
+  <ion-fab right bottom>
+    <button ion-fab color="succeed" (click)="onSelectDoneClick()">确定</button>
+  </ion-fab>
+  <!--防止底部的提交按钮无法点击-->
+  <div style="height: 94px"></div>
+  <pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>
+</ion-content>
+<loading-error-tip></loading-error-tip>

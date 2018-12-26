@@ -1,0 +1,13 @@
+<div *ngIf="!data?.task || data?.task?.status === 5;else task" class="text-size-big color-accent"
+     (click)="onCreateTaskClick()">浇水
+</div>
+<ng-template #task>
+  <div class="text-size-normal color-text-dark-week">{{data?.task?.status | irrigateTaskStatus}}</div>
+  <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 200 20" preserveAspectRatio="xMidYMid meet"
+       margin-left>
+    <path d="m0,10 l200,0" stroke="#d6d6d6"/>
+    <path d="m0,10 l200,0 l0,0.000001" stroke-dasharray="200" stroke-dashoffset="200" stroke="#4b89da"
+          [attr.stroke-dashoffset]="(1 - percent) * 200"/>
+  </svg>
+  <div class="text-size-big color-accent" margin-left (click)="onCancelTaskClick()">取消</div>
+</ng-template>

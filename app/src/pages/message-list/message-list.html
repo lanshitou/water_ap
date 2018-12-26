@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button color="light" (click)="allMarkRead()">
+        全部已读
+      </button>
+    </ion-buttons>
+    <ion-title>{{messageType | getMessageCatName}}</ion-title>
+  </ion-toolbar>
+  <div class="ios-scroll-bar-hide" *ngIf="messageType !== 1 && systemDataList.length > 1">
+    <scroll-y-container>
+      <ion-segment [(ngModel)]="checkedSystemId">
+        <ion-segment-button *ngFor="let system of  systemDataList;trackBy: trackById" [value]="system.id"
+                            (ionSelect)="checkedSystemId = system.id;scrollToPosition()">
+          <div class="flex-center">
+            <div>{{system.name}}</div> <div *ngIf="system.count > 0" class="badge"></div>
+          </div>
+        </ion-segment-button>
+      </ion-segment>
+    </scroll-y-container>
+  </div>
+</ion-header>
+
+<ion-content>
+  <message-list *ngFor="let system of  systemDataList;trackBy: trackById"
+                [type]="messageType" [systemId]="system.id" [show]="checkedSystemId === system.id">
+  </message-list>
+</ion-content>
+
+<loading-error-tip></loading-error-tip>

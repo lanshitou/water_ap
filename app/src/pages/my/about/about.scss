@@ -1,0 +1,24 @@
+page-about {
+
+  ion-list.list {
+    @include card;
+    margin: 12px;
+  }
+
+  .img-container {
+    margin: 64px 32px;
+    text-align: center;
+    .logo {
+      border-radius: 12px;
+      @include heightWidth(96px)
+    }
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
+  }
+
+}

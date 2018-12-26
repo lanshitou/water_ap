@@ -1,0 +1,18 @@
+{
+  "name": "众智新农",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "com.zzwl.zzxn",
+  "proxies": [
+    {
+      "path": "/mock",
+      "proxyUrl": "https://dsn.apizza.net/mock/2a3ce624a47d2a952398738a7f591ff5"
+    },
+    {
+      "path": "/openYs",
+      "proxyUrl": "https://open.ys7.com/api"
+    }
+  ]
+}

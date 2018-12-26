@@ -1,0 +1,52 @@
+page-ias {
+  ion-header {
+    background-color: white;
+    ion-buttons.bar-buttons {
+      margin: 0;
+      padding: 0;
+      .bar-button {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .ios-scroll-bar-hide {
+      height: 50px;
+      overflow: hidden;
+      scroll-y-container {
+        min-height: 70px;
+        border-bottom: 20px;
+      }
+    }
+
+    ion-segment.segment {
+      @include hw(50px,null);
+
+      .segment-button{
+        @include hw(50px,null);
+      }
+
+      .segment-button:nth-last-of-type(n + 2),
+      .segment-button:nth-last-of-type(n + 2) ~ .segment-button {
+        min-width: 50vw;
+      }
+
+      .segment-button:nth-last-of-type(n + 3),
+      .segment-button:nth-last-of-type(n + 3) ~ .segment-button {
+        min-width: 33vw;
+      }
+    }
+  }
+
+  .scroll-content {
+    padding-bottom: 56px;
+
+    decorate-title {
+      margin: 8px 0 8px 11px;
+    }
+
+    farmland + farmland {
+      margin-top: 12px;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="item-warp" navTo="WaringListPage" [params]="2">
+  <img class="img" src="./assets/imgs/waring/img_irrigate.png">
+  <div class="title">灌溉任务</div>
+  <div class="badge">{{data?.irrigate > 99 ? '9+' : data?.irrigate > 0 ? data.irrigate : 0}}</div>
+</div>
+
+<div class="item-warp" navTo="WaringListPage" [params]="3">
+  <img class="img" src="./assets/imgs/waring/img_offline.png">
+  <div class="title">设备离线</div>
+  <div class="badge">{{data?.offline > 99 ? '9+' : data?.offline > 0 ? data.offline : 0}}</div>
+</div>
+
+<div class="item-warp" navTo="WaringListPage" [params]="1">
+  <img class="img" src="./assets/imgs/waring/img_alarm.png">
+  <div class="title">阈值告警</div>
+  <div class="badge">{{data?.alarm > 99 ? '9+' : data?.alarm > 0 ? data.alarm : 0}}</div>
+</div>
+
+<div class="item-warp" navTo="WaringListPage" [params]="4">
+  <img class="img" src="./assets/imgs/waring/img_other.png">
+  <div class="title">其他告警</div>
+  <div class="badge">{{data?.other > 99 ? '9+' : data?.other > 0 ? data.other : 0}}</div>
+</div>

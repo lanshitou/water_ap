@@ -1,0 +1,39 @@
+loading-error-tip {
+  .root-container {
+    pointer-events: auto;
+    position: absolute;
+    @include fullPosition();
+    z-index: getLayer(loading-tip);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: getColor(content);
+
+    .error-try-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .error-image {
+        width: 128px;
+      }
+      .error, .tryTip {
+        word-break: break-all;
+        width: calc(100% - 64px);
+        font-size: getFontSize(normal);
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      .error {
+        font-weight: 700;
+        font-size: getFontSize(normal);
+      }
+      .tryTip {
+        font-weight: 500;
+        font-size: 12px;
+        opacity: 0.54;
+      }
+    }
+  }
+}

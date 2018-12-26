@@ -1,0 +1,20 @@
+$layers: (
+  pull-refresh: 5,
+  full-screnn-header: 6,
+  loading-tip: 9,
+  fab: 7,
+);
+
+@function getLayer($value) {
+  @if map_has_key($layers, $value) {
+    @return map_get($layers, $value);
+  }
+  @warn "the key #{value} is not in the layers";
+  @return null;
+}
+
+@each $name, $value in $layers {
+  .z-#{$name} {
+    z-index: $value;
+  }
+}

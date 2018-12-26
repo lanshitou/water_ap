@@ -1,0 +1,235 @@
+info-warp {
+  display: block;
+  background-color: white;
+  padding: 8px 0;
+  width: 100%;
+
+  decorate-title {
+    margin-left: 8px;
+  }
+
+  .warp-1 {
+    [col-6] {
+      padding: 5px 5px 8px 5px;
+    }
+
+    .img-warp {
+      position: relative;
+      @include hw(0, 100%);
+      padding-bottom: 75%;
+
+      .img {
+        position: absolute;
+        @include fullPosition;
+        @include heightWidth(100%);
+        border-radius: 8px;
+      }
+
+      .watch-warp {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-shadow: 0 1px 6px #545454;;
+
+        font-size: getFontSize(normal);
+
+        position: absolute;
+        @include position(8px, 8px, null, null);
+
+        .watch-count {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .title-warp {
+      margin-top: 8px;
+      overflow: hidden;
+      height: 36px;
+
+      .title {
+        color: getColor(text-dark);
+        font-size: getFontSize(small);
+        line-height: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .warp-2 {
+    padding: 0 11px;
+    margin: 8px 0;
+
+    .img-warp {
+      position: relative;
+      @include hw(0, 100%);
+      padding-bottom: 45%;
+
+      .img {
+        position: absolute;
+        @include fullPosition;
+        @include heightWidth(100%);
+        border-radius: 8px;
+      }
+
+      .watch-warp {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-shadow: 0 1px 6px #545454;;
+
+        font-size: getFontSize(normal);
+
+        position: absolute;
+        @include position(8px, 8px, null, null);
+
+        .watch-count {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .title-warp {
+      margin-top: 8px;
+      overflow: hidden;
+      height: 40px;
+
+      .title {
+        color: getColor(text-dark);
+        font-size: getFontSize(big);
+        line-height: 20px;
+        font-weight: 700;
+      }
+    }
+
+  }
+
+  .warp-3 + .warp-3 {
+    margin-top: 16px;
+  }
+
+  .warp-3 {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 11px;
+
+    .img-warp {
+      position: relative;
+      @include hw(114px, 128px);
+
+      .img {
+        position: absolute;
+        @include fullPosition;
+        @include heightWidth(100%);
+        border-radius: 8px;
+      }
+    }
+
+    .text-warp {
+      margin-left: 24px;
+
+      .title-warp {
+        color: getColor(text-dark);
+        margin-top: 8px;
+        overflow: hidden;
+        height: 40px;
+
+        .title {
+          font-size: getFontSize(big);
+          line-height: 20px;
+          font-weight: 700;
+        }
+      }
+
+      .watch-time-warp {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        .watch-warp, .timer-warp {
+          display: flex;
+          align-items: center;
+          margin-right: 24px;
+          color: getColor(text-dark-week);
+          font-size: getFontSize(normal);
+          .text {
+            margin-left: 8px;
+          }
+        }
+      }
+
+      .divider {
+        margin: 11px 0;
+      }
+
+      .origin-warp {
+        font-size: getFontSize(normal);
+        color: getColor(text-dark);
+      }
+    }
+  }
+
+  .warp-4 {
+    margin: 5px;
+    position: relative;
+    @include hw(45vw, 80vw);
+
+    .img-warp {
+      position: relative;
+      @include heightWidth(100%);
+
+      .img {
+        position: absolute;
+        @include fullPosition;
+        @include heightWidth(100%);
+        border-radius: 8px;
+      }
+
+      .watch-warp {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-shadow: 0 1px 6px #545454;;
+
+        font-size: getFontSize(normal);
+
+        position: absolute;
+        @include position(8px, 8px, null, null);
+
+        .watch-count {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .title-warp {
+      padding: 8px;
+      position: absolute;
+      @include position(null, 0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      max-height: 52px;
+
+      .title {
+        color: getColor(text-light);
+        font-size: getFontSize(small);
+        line-height: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .info-type {
+    float: left;
+    padding: 1px 2px;
+    margin-right: 4px;
+    font-size: getFontSize(tiny);
+    color: getColor(accent);
+    border: 1px solid getColor(accent);
+    @include hw(18px, max-content);
+    &.white {
+      color: getColor(white);
+      border: 1px solid getColor(white);
+    }
+  }
+}

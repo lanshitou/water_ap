@@ -1,0 +1,10 @@
+<div class="flex-j-between flex-a-center">
+  <div class="flex-a-center">
+    <img class="device-icon" src="{{data.type | deviceIcon}}">
+    <div class="text-size-big color-text-dark font-bold">{{data.name}}</div>
+  </div>
+  <div class="text-size-small font-bold" [style.color]="data.status | deviceStatusTextColor">{{data.status |
+    deviceStatus : data.type}}
+  </div>
+</div>
+<img *ngIf="data.alarmType !== 0" class="waring-icon" src="./assets/imgs/img_waring.png">

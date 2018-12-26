@@ -1,0 +1,102 @@
+weather {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: linear-gradient(45deg, RGBA(185, 214, 198, 1) 0%, RGBA(109, 190, 203, 1) 100%);
+
+  .root-container {
+    color: getColor(white);
+
+    padding: 16px 16px 16px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .type-desc {
+      font-size: getFontSize(big);
+      font-weight: 700;
+    }
+
+    .content-warp {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      height: 34px;
+      margin: 12px 0;
+    }
+
+    .other-warp {
+      display: flex;
+      width: 100%;
+    }
+
+    .forecast-temp-warp {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-size: getFontSize(big);
+    }
+
+    .today-container {
+      flex-basis: 50%;
+
+      .content-warp {
+        height: 34px;
+
+        .now-temp {
+          font-size: 40px;
+        }
+
+        .divider-v {
+          margin: 0 12px;
+          height: 100%;
+          width: 3px;
+          background-color: white;
+          transform: rotate(15deg);
+        }
+      }
+
+      .other-warp {
+        align-items: flex-end;
+        .status {
+          font-size: getFontSize(big);
+          margin-right: 16px;
+        }
+        .update {
+          font-size: getFontSize(small);
+        }
+      }
+    }
+
+    .divider-v-top {
+      flex-basis: 10%;
+      align-self: flex-start;
+      height: 86px;
+      @include center;
+
+      div {
+        height: 100%;
+        background-color: getColor(divider);
+        width: 1px;
+      }
+    }
+
+    .forecast-container {
+      flex-basis: 40%;
+
+      .content-warp {
+        .temp-icon {
+          @include heightWidth(34px);
+          margin-right: 24px;
+        }
+      }
+
+      .other-warp {
+        font-size: getFontSize(big);
+        justify-content: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+comment-publish {
+  display: block;
+  position: absolute;
+  bottom: -64px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  transition: bottom 300ms ease-in-out;
+
+  .comment-publish-warp {
+    @include hw(48px, 100%);
+    box-shadow: 1px 0 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+
+    input {
+      @include center;
+      height: 100%;
+      padding: 0 16px;
+      background-color: transparent;
+      flex: 1;
+      border: none;
+      color: getColor(text-dark);
+      font-size: getFontSize(normal);
+    }
+
+    .submit-button {
+      @include center;
+      height: 100%;
+      font-size: getFontSize(big);
+      font-weight: 700;
+      padding: 0 16px;
+      margin: 0;
+    }
+  }
+
+  &.show-comment {
+    bottom: 0;
+  }
+}

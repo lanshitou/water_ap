@@ -1,0 +1,32 @@
+page-user-detail {
+
+  decorate-title {
+    margin-top: 12px;
+    margin-left: 8px;
+  }
+
+  ion-list.list {
+    @include card;
+    margin: 12px;
+  }
+
+  ion-list.list-md {
+    .header-img {
+      @include heightWidth(24px)
+    }
+
+    .input-wrapper {
+      overflow: initial;
+    }
+  }
+
+  .empty-plant-container {
+    width: 100%;
+    padding: 32px;
+    background-color: white;
+    text-align: center;
+    img {
+      width: 40%;
+    }
+  }
+}

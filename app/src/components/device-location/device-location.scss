@@ -1,0 +1,63 @@
+device-location {
+  display: block;
+
+  .title-warp {
+    margin: 16px 12px 8px 8px;
+  }
+
+  .content-warp {
+    margin: 12px;
+    @include card;
+
+    .color1 {
+      background-color: rgba(0, 150, 136, 1);
+    }
+
+    .color2 {
+      background-color: rgba(59, 155, 255, 1);
+    }
+
+    .color3 {
+      background-color: rgba(37, 155, 36, 1);
+    }
+
+    .color4 {
+      background-color: rgba(59, 155, 255, 1);
+    }
+
+    .item-warp {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: getColor(divider);
+        bottom: 0;
+        left: 32px;
+        right: 8px;
+      }
+
+      .icon {
+        @include heightWidth(6px);
+        border-radius: 50%;
+      }
+
+      .desc {
+        margin: 0 16px;
+        flex: 1;
+        font-size: getFontSize(normal);
+        color: getColor(text-dark-week);
+      }
+
+      .name {
+        font-size: getFontSize(normal);
+        color: getColor(text-dark);
+        font-weight: 700;
+      }
+    }
+  }
+}

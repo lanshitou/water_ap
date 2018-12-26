@@ -1,0 +1,50 @@
+<div class="root-container">
+  <ng-container *ngIf="data">
+    <!--<div class="forecast-container">-->
+    <!--<div class="title">明日天气</div>-->
+    <!--<div class="des">气温: {{data.dailyForecast[1].tmpMin}}°C ~ {{data.dailyForecast[1].tmpMax}}°C</div>-->
+    <!--<div class="des">白天{{data.dailyForecast[1].condTxtD}} 到 夜间{{data.dailyForecast[1].condTxtN}}</div>-->
+    <!--</div>-->
+
+    <!--<div class="temp-container">-->
+    <!--<div class="temp">{{data.now.tmp}}</div>-->
+    <!--<div class="unit">°C</div>-->
+    <!--</div>-->
+    <!--<div class="info-container">-->
+    <!--<div class="update">{{data.update.loc | date:"HH:mm"}}更新</div>-->
+    <!--<div class="status">{{data.now.condTxt}}</div>-->
+    <!--</div>-->
+
+    <div class="today-container">
+      <div class="type-desc">实时天气</div>
+      <div class="content-warp">
+        <div class="now-temp">{{data.now.tmp}}°C</div>
+        <div class="divider-v"></div>
+        <div class="forecast-temp-warp">
+          <div>{{data.dailyForecast[0].tmpMax}}°C</div>
+          <div>{{data.dailyForecast[1].tmpMin}}°C</div>
+        </div>
+      </div>
+      <div class="other-warp">
+        <div class="status">{{data.now.condTxt}}</div>
+        <div class="update">{{data.update.loc | date:"HH:mm"}}更新</div>
+      </div>
+    </div>
+
+    <div class="divider-v-top">
+      <div></div>
+    </div>
+
+    <div class="forecast-container">
+      <div class="type-desc">明天</div>
+      <div class="content-warp">
+        <img [src]="'./assets/imgs/weather/' + data.dailyForecast[1].condCodeD + '.png'" class="temp-icon">
+        <div class="forecast-temp-warp">
+          <div>{{data.dailyForecast[0].tmpMax}}°C</div>
+          <div>{{data.dailyForecast[1].tmpMin}}°C</div>
+        </div>
+      </div>
+      <div class="other-warp">{{data.dailyForecast[1].condTxtD}}</div>
+    </div>
+  </ng-container>
+</div>

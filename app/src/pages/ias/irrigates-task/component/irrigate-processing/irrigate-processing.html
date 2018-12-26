@@ -1,0 +1,34 @@
+<ion-content>
+  <ng-container *ngIf="data">
+    <div class="card-warp" *ngFor="let item of data;trackBy: trackById">
+      <div class="item-warp">
+        <div class="item-left">灌溉区域:</div>
+        <div class="item-right font-bold">{{item.farmlandName}}-{{item.irriAreaName}}</div>
+      </div>
+      <div class="item-warp">
+        <div class="item-left">灌溉状态:</div>
+        <div class="item-right font-bold color-succeed">{{item.status | irrigateTaskStatus}}
+        </div>
+      </div>
+      <div class="item-warp">
+        <div class="item-left">操作用户:</div>
+        <div class="item-right flex-a-center">
+          <img #createHeader class="icon" (error)="createHeader.src='./assets/imgs/img_default_head.png'"
+               [src]="item.createUser.headerImage"/>
+          <div>{{item.createUser.username}}</div>
+        </div>
+      </div>
+      <div class="item-warp" *ngIf="item.startDate">
+        <div class="item-left">开始时间{{item.status === 1 ? '(预估)' : ''}}:</div>
+        <div class="item-right">{{item.startDate | date : "MM-dd HH:mm"}}</div>
+      </div>
+      <div class="item-warp" *ngIf="item.stopDate">
+        <div class="item-left">结束时间{{item.status === 1 ? '(预估)' : ''}}:</div>
+        <div class="item-right">{{item.stopDate | date : "MM-dd HH:mm"}}</div>
+      </div>
+    </div>
+  </ng-container>
+
+  <pull-refresh [scrollContent]="contentCmp" (onRefresh)="getData(2)"></pull-refresh>
+</ion-content>
+<loading-error-tip></loading-error-tip>

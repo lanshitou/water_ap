@@ -1,0 +1,26 @@
+page-help {
+  .title-container {
+    margin-left: 16px;
+    margin-top: 16px;
+  }
+
+  .tel-container {
+    margin: 64px 32px;
+    .custom-service-icon {
+      background: url(../assets/imgs/img_custom_service.png) center;
+      margin-bottom: 8px;
+      background-size: contain;
+      height: 76px;
+      width: 76px;
+    }
+
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
+  }
+
+}

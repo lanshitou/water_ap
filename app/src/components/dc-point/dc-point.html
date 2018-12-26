@@ -1,0 +1,16 @@
+<div class="flex-j-between flex-a-center">
+  <div class="flex-a-center">
+    <div class="color-text-dark text-size-big font-bold">{{data.type | dcPointType}}</div>
+    <div class="color-text-dark-week text-size-normal sort-name">{{data.name | dcPointSortName : ''}}</div>
+  </div>
+  <div class="color-text-dark-week text-size-small font-bold">{{data.type | dcPointUnit}}</div>
+</div>
+
+<div class="flex-a-center margin-top-12">
+  <img class="dc-point-icon" src="{{data.type | dcPointIcon}}">
+  <div #value class="flex-center font-bold text-size-huge-x"
+       [ngStyle]="{width: '100%', color : data.alarmType | dcPointColor}">
+  </div>
+</div>
+
+<img *ngIf="data.alarmType !== 0" class="waring-icon" src="./assets/imgs/img_waring.png">

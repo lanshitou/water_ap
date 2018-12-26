@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{irrigateName}} 浇水记录</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <irrigate-task-history *ngFor="let d of data;trackBy: trackById" [data]="d"></irrigate-task-history>
+  <load-more (onLoadMore)="getData(3)"></load-more>
+</ion-content>
+<loading-error-tip></loading-error-tip>

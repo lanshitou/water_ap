@@ -1,0 +1,61 @@
+page-message {
+  ion-header {
+    background-color: getColor(primary);
+    z-index: getLayer(full-screnn-header);
+
+    .toolbar-title-md {
+      color: getColor(text-light);
+    }
+
+    .toolbar-background-md {
+      background-color: transparent;
+    }
+  }
+
+  ion-content > .scroll-content {
+    &:before {
+      content: '';
+      position: absolute;
+      background-color: getColor(primary);
+      height: 32px;
+      width: 100%;
+    }
+
+    .list-md {
+      margin: 0 8px 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        @include fullPosition;
+        background-color: white;
+      }
+
+      .item-md {
+        background-color: transparent;
+
+        [item-right] {
+          margin: 0;
+        }
+
+        .item-inner {
+          padding-top: 4px;
+          padding-bottom: 4px;
+
+          ion-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: getFontSize(small);
+            @include heightWidth(24px)
+          }
+        }
+      }
+    }
+
+  }
+}

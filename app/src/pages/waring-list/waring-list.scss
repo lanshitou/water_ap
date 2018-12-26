@@ -1,0 +1,8 @@
+page-waring-list {
+  ion-header {
+    background-color: getColor(white);
+    ion-segment.segment .segment-button {
+      min-width: 50vw;
+    }
+  }
+}

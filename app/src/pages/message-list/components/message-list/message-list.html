@@ -1,0 +1,6 @@
+<ion-content>
+  <message-item *ngFor="let d of data" [data]="d"></message-item>
+  <load-more (onLoadMore)="getData(3)"></load-more>
+</ion-content>
+<pull-refresh [scrollContent]="content" (onRefresh)="messageProvider.messageChangeEvent.emit()"></pull-refresh>
+<loading-error-tip></loading-error-tip>

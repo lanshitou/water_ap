@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="flex-a-center header-container">
+    <button ion-button clear (click)="onPop()">已有账号</button>
+  </div>
+
+  <div class="main-container">
+    <div class="title">注册众智新农</div>
+    <form #f="ngForm" (submit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="请输入手机号" [clearInput]="true" name="tel" type="tel"
+                     maxlength="11" minlength="11" required
+                     [(ngModel)]="tel"></ion-input>
+        </ion-item>
+        <div class="error-des">请输入正确的手机号</div>
+      </ion-list>
+      <button class="submit-button" type="submit" ion-button full large [disabled]="!f.valid">下一步</button>
+    </form>
+    <div class="tip" navTo="AgreementPage">
+      <span class="color-text-dark-week">我已阅读并同意遵守</span>用户服务协议
+    </div>
+  </div>
+
+  <div class="copyright flex-center text-size-tiny color-text-dark-week">
+    {{copyright}}
+  </div>
+</ion-content>

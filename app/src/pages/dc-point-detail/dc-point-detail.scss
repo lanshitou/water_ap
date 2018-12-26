@@ -1,0 +1,65 @@
+page-dc-point-detail {
+  .warn-container {
+    background-color: #FAA519;
+    padding: 8px 16px;
+  }
+
+  .card-style{
+    @include card;
+    margin: 12px;
+    padding: 8px;
+  }
+
+  .dc-point-icon {
+    border-radius: 50%;
+    @include heightWidth(42px)
+  }
+  ion-segment {
+    padding: 0 16px;
+  }
+  .chart-canvas {
+    height: 200px;
+    width: 100%;
+  }
+  form {
+    .change-threshold-button {
+      margin: 0 16px;
+      padding: 0;
+      background-color: transparent;
+      color: getColor(accent);
+      font-size: getFontSize(big);
+    }
+    .alarm-loading {
+      height: 54px;
+      margin-top: 48px;
+      @include center;
+    }
+    .alarm-img {
+      margin-top: 24px;
+      width: 40%;
+    }
+    .alarm-config-now {
+      margin-top: 32px;
+      width: 168px;
+      height: 42px;
+    }
+
+    ion-item.item-md {
+      margin-top: 24px;
+      padding-left: 0;
+      background-color: transparent;
+
+      ion-label.label-md {
+        font-size: getFontSize(large);
+        color: getColor(text-dark);
+      }
+
+      .item-inner {
+        max-width: 140px;
+        input {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

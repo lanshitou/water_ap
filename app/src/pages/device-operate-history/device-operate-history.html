@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left navPop>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{device.name}} 操作记录</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card-warp" *ngFor="let h of data;trackBy: trackById">
+    <div class="title-warp">
+      <div class="flex-a-center">
+        <img class="icon" src="{{device.type | deviceIcon}}">
+        <div class="font-bold text-size-big margin-left-16">{{device.name}}</div>
+      </div>
+      <img class="icon"
+           [src]="'./assets/imgs/' + (h.result === 0 ? 'img_device_op_succeed.png' : 'img_device_op_failed.png')">
+    </div>
+    <div class="content-warp">
+      <div class="flex-a-center item-warp">
+        <div class="color-text-dark-week text-size-normal">操作类型 :</div>
+        <div class="color-text-dark text-size-normal margin-left-16">{{h.opType | deviceOpType: device.type :
+          h.param}}
+        </div>
+      </div>
+      <div class="flex-a-center item-warp">
+        <div class="color-text-dark-week text-size-normal">操作时间 :</div>
+        <div class="color-text-dark text-size-normal margin-left-16">{{h.time | date:'yyyy-MM-dd HH:mm'}}</div>
+      </div>
+      <div class="flex-a-center item-warp">
+        <div class="color-text-dark-week text-size-normal">启动时长 :</div>
+        <div class="color-text-dark text-size-normal margin-left-16">{{h.duration > 0 ? ((h.duration * 1000) | minute) :
+          '手动停止'}}
+        </div>
+      </div>
+      <div class="flex-a-center item-warp" *ngIf="h.result !== 0">
+        <div class="color-text-dark-week text-size-normal">故障原因 :</div>
+        <div class="color-text-danger text-size-normal margin-left-16">无法打开设备</div>
+      </div>
+      <div class="flex-a-center item-warp">
+        <div class="color-text-dark-week text-size-normal">操作用户 :</div>
+        <div class="flex-a-center margin-left-16">
+          <img #header class="icon" (error)="header.src='./assets/imgs/img_default_head.png'"
+               [src]="h.user.headerImage">
+          <div class="color-text-dark text-size-normal margin-left-6">{{h.user.username}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <load-more (onLoadMore)="getData(3)"></load-more>
+</ion-content>
+
+<loading-error-tip></loading-error-tip>

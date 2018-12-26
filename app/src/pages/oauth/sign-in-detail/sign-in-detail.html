@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="flex-a-center header-container">
+    <button ion-button clear icon-only (click)="onPop()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </div>
+
+  <div class="main-container">
+    <div class="title">您正在注册众智新农</div>
+
+    <div class="vcode">
+      <div>已经发送验证码到</div>
+      <div>{{tel}}</div>
+    </div>
+
+    <form #f="ngForm" (submit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="请输验证码" [clearInput]="true" name="vcode" type="tel"
+                     maxlength="6" minlength="6" required
+                     [(ngModel)]="vcode"></ion-input>
+        </ion-item>
+        <div class="error-des">请输入正确的验证码</div>
+        <ion-item>
+          <ion-input placeholder="请输昵称" [clearInput]="true" name="nickName" type="text"
+                     pattern="^[\d\w\u4e00-\u9fa5]{1,12}$" required
+                     [(ngModel)]="nickName"></ion-input>
+        </ion-item>
+        <div class="error-des">请输入正确的昵称 只能输入中文</div>
+        <ion-item>
+          <ion-input placeholder="请输入密码" [clearInput]="true" name="password"
+                     [type]="passwordVisible ? 'text' : 'password'"
+                     pattern="^[a-zA-Z0-9]{6,12}$" required
+                     [(ngModel)]="password"></ion-input>
+          <button type="button" class="password-visible" ion-button icon-only clear item-right
+                  (click)="passwordVisible = !passwordVisible;">
+            <ion-icon [name]="passwordVisible ? 'eye' : 'eye-off'"></ion-icon>
+          </button>
+          <div class="error-des">仅允许大小写字母与数字的组合 6到12位</div>
+
+        </ion-item>
+      </ion-list>
+      <button class="submit-button" type="submit" ion-button full large [disabled]="!f.dirty || !f.valid">注册</button>
+    </form>
+
+    <div class="tip" [class.disable-tip]="userProvider.lastSendVcodeTime > 0" (click)="onResend()">
+      重新发送验证码{{userProvider.lastSendVcodeTime == 0 ? '' : '(' + userProvider.lastSendVcodeTime + ')'}}
+    </div>
+  </div>
+
+  <div class="copyright flex-center text-size-tiny color-text-dark-week">
+    {{copyright}}
+  </div>
+</ion-content>

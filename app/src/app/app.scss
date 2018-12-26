@@ -1,0 +1,68 @@
+.single-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.divider {
+  border-bottom: solid 1px getColor(divider);
+  width: 100%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-j-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-j-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-a-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-tabs {
+  ion-badge {
+    @include center;
+    @include heightWidth(22px)
+  }
+}
+
+.shark-anime {
+  animation: shake-dev 500ms 15 linear;
+}
+
+@keyframes shake-dev {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(0, -2px);
+  }
+  100% {
+    transform: translate(0, 2px);
+  }
+}

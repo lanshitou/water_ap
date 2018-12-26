@@ -1,0 +1,13 @@
+page-farmland {
+  .scroll-content {
+    padding-bottom: 56px;
+
+    decorate-title {
+      margin: 8px 0 8px 11px;
+    }
+
+    decorate-title + decorate-title {
+      margin-top: 0;
+    }
+  }
+}

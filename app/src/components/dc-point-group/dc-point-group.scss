@@ -1,0 +1,22 @@
+dc-point-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 12px;
+
+  dc-point {
+    @include hw(null, calc(50% - 6px));
+  }
+
+  & > :nth-child(2n + 0) {
+    margin-left: 6px;
+  }
+
+  & > :nth-child(2n + 1) {
+    margin-right: 6px;
+  }
+
+  & > :nth-child(1n + 3) {
+    margin-top: 12px;
+  }
+
+}
